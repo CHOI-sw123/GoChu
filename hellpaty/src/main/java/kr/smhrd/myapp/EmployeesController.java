@@ -15,46 +15,46 @@ import kr.smhrd.model.*;
 
 
 @Controller
-public class MemberController {
+public class EmployeesController {
 	
 	@Autowired
 	private EmployeesDAO employeesDAO;
 	
-	@RequestMapping("/list.do")
-	public String memberList(Model model) {
+	@RequestMapping("/elist.do")
+	public String employeesList(Model model) {
 		List<EmployeesVO> list = employeesDAO.employeesList();
 		model.addAttribute("list",list);
-		return "memberList";
+		return "employeesList";
 	}
 	
-	@RequestMapping("/insertForm.do")
-	public String memberInsertForm() {
-		return "member";
+	@RequestMapping("/einsertForm.do")
+	public String employeesInsertForm() {
+		return "employees";
 	}
 	
-	@RequestMapping("/insert.do")
-	public String memberInsert(EmployeesVO vo) {
+	@RequestMapping("/einsert.do")
+	public String employeesInsert(EmployeesVO vo) {
 		//System.out.println(vo.toString());
 		employeesDAO.employeesInsert(vo);
 		return "redirect:/list.do";
 	}
 	
-	@RequestMapping("/content.do")
-	   public String memberContent(@RequestParam("num") int num, Model model) {
+	@RequestMapping("/econtent.do")
+	   public String employeesContent(@RequestParam("num") int num, Model model) {
 	      //System.out.println(aaa);
 		EmployeesVO vo = employeesDAO.employeesContent(num);
 		model.addAttribute("vo",vo);
-	      return "memberContent";
+	      return "employeesContent";
 	   }
 	
-	@RequestMapping("/delete.do")
+	@RequestMapping("/edelete.do")
 	   public String employeesDelete(@RequestParam("num") int num) {
 	      //System.out.println(aaa);
 		employeesDAO.employeesDelete(num);
 	      return "redirect:/list.do";
 	   }
 	
-	@RequestMapping("/update.do")
+	@RequestMapping("/eupdate.do")
 	   public String employeesUpdate(EmployeesVO vo) {
 	      //System.out.println(aaa);
 		employeesDAO.employeesUpdate(vo);

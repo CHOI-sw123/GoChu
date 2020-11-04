@@ -16,30 +16,17 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 	@Override
 	public List<EmployeesVO> employeesList() {
 		SqlSession session = sqlSessionFactory.openSession();
-		List<EmployeesVO> elist =null;
+		List<EmployeesVO> list =null;
 		try {
-			elist=session.selectList("employees");
+			list=session.selectList("employees");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			session.close();
 		}
-		return elist;
+		return list;
 	}
-	
-	@Override
-	public List<EmployeesVO> candidatesList() {
-		SqlSession session = sqlSessionFactory.openSession();
-		List<EmployeesVO> clist =null;
-		try {
-			clist=session.selectList("candidates");
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			session.close();
-		}
-		return clist;
-	}
+
 
 	@Override
 	public int employeesInsert(EmployeesVO vo) {

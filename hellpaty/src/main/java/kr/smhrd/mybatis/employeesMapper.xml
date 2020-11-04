@@ -2,23 +2,23 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.smhrd.mybatis.memberMapper">
-	<select id="memberList" resultType="MemberVO">
+<mapper namespace="kr.smhrd.mybatis.employeesMapper">
+	<select id="employeesList" resultType="EmployeesVO">
 		select * from employees order
-		by num desc
+		by enumber desc
 	</select>
-	<insert id="memberInsert" parameterType="MemberVO">
+	<insert id="employeesInsert" parameterType="EmployeesVO">
 		insert into manager
 		values(big_seq.nextval,#{name},#{id},#{email},#{phone})
 	</insert>
-	<select id="memberContent" parameterType="Integer"
-		resultType="MemberVO">
+	<select id="employeesContent" parameterType="Integer"
+		resultType="EmployeesVO">
 		select * from bigdata where num = #{num}
 	</select>
-	<delete id="memberDelete" parameterType="Integer">
+	<delete id="employeesDelete" parameterType="Integer">
 		delete bigdata where num=#{num}
 	</delete>
-	<update id="memberUpdate" parameterType="MemberVO" >
+	<update id="employeesUpdate" parameterType="EmployeesVO" >
 	    update bigdata set email=#{email},phone=#{phone} where num=#{num}
 	</update>
 
