@@ -18,7 +18,7 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 		SqlSession session = sqlSessionFactory.openSession();
 		List<EmployeesVO> list =null;
 		try {
-			list=session.selectList("employees");
+			list=session.selectList("employeesList");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -27,12 +27,11 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 		return list;
 	}
 
-
 	@Override
 	public int employeesInsert(EmployeesVO vo) {
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
-			session.insert("memberInsert", vo);
+			session.insert("employeesInsert", vo);
 			session.commit();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -41,6 +40,7 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 		}
 		return 0;
 	}
+	
 	@Override
 	public EmployeesVO employeesContent(int num) {
 		SqlSession session = sqlSessionFactory.openSession();
@@ -67,6 +67,7 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 		}
 		return 0;
 	}
+	
 	@Override
 	public int employeesUpdate(EmployeesVO vo) {
 		SqlSession session = sqlSessionFactory.openSession();

@@ -4,22 +4,23 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.smhrd.mybatis.employeesMapper">
 	<select id="employeesList" resultType="EmployeesVO">
-		select * from employees order
-		by enumber desc
+		SELECT enumber,dept_name,name,sex,TO_CHAR(entry_date,'yyyy-mm-dd') entry_date FROM employees ORDER BY entry_date DESC
 	</select>
+	
 	<insert id="employeesInsert" parameterType="EmployeesVO">
-		insert into manager
-		values(big_seq.nextval,#{name},#{id},#{email},#{phone})
+		INSERT INTO employees VALUES(#{enumber},#{dept_name},#{name},#{sex},#{entry_date},#{code})
 	</insert>
-	<select id="employeesContent" parameterType="Integer"
-		resultType="EmployeesVO">
-		select * from bigdata where num = #{num}
+	
+	<select id="employeesContent" parameterType="Integer" resultType="EmployeesVO">
+		SELECT * FROM employees WHERE enumber = #{enumber}
 	</select>
+	
 	<delete id="employeesDelete" parameterType="Integer">
-		delete bigdata where num=#{num}
+		DELETE employees WHERE enumber=#{enumber}
 	</delete>
-	<update id="employeesUpdate" parameterType="EmployeesVO" >
-	    update bigdata set email=#{email},phone=#{phone} where num=#{num}
-	</update>
 
+	<update id="employeesUpdate" parameterType="EmployeesVO" >
+	    UPDATE employees SET dept_name=#{dept_name} WHERE enumber=#{enumber}
+	</update>
+ 
 </mapper>

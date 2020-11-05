@@ -2,22 +2,22 @@ package kr.smhrd.model;
 
 public class EmployeesVO {
 	private String enumber;
-	private String deptName;
+	private String dept_name;
 	private String name;
 	private String sex;
-	private String entryDate;
+	private String entry_date;
 	private String code;
 	
 	public EmployeesVO() {
 	}
 
-	public EmployeesVO(String enumber, String deptName, String name, String sex, String entryDate, String code) {
+	public EmployeesVO(String enumber, String dept_name, String name, String sex, String entry_date, String code) {
 		super();
 		this.enumber = enumber;
-		this.deptName = deptName;
+		this.dept_name = dept_name;
 		this.name = name;
 		this.sex = sex;
-		this.entryDate = entryDate;
+		this.entry_date = entry_date;
 		this.code = code;
 	}
 
@@ -29,12 +29,12 @@ public class EmployeesVO {
 		this.enumber = enumber;
 	}
 
-	public String getDeptName() {
-		return deptName;
+	public String getDept_name() {
+		return dept_name;
 	}
 
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
+	public void setDept_name(String dept_name) {
+		this.dept_name = dept_name;
 	}
 
 	public String getName() {
@@ -53,12 +53,12 @@ public class EmployeesVO {
 		this.sex = sex;
 	}
 
-	public String getEntryDate() {
-		return entryDate;
+	public String getEntry_date() {
+		return entry_date;
 	}
 
-	public void setEntryDate(String entryDate) {
-		this.entryDate = entryDate;
+	public void setEntry_date(String entry_date) {
+		this.entry_date = entry_date;
 	}
 
 	public String getCode() {
@@ -71,10 +71,9 @@ public class EmployeesVO {
 
 	@Override
 	public String toString() {
-		return "EmployeesVO [enumber=" + enumber + ", deptName=" + deptName + ", name=" + name + ", sex=" + sex
-				+ ", entryDate=" + entryDate + ", code=" + code + "]";
+		return "EmployeesVO [enumber=" + enumber + ", dept_name=" + dept_name + ", name=" + name + ", sex=" + sex
+				+ ", entry_date=" + entry_date + ", code=" + code + "]";
 	}
-
 	
 	
 }

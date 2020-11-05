@@ -13,7 +13,7 @@ CREATE TABLE employees
 dept_name varchar2(100) not null,
 name varchar2(32) not null,
 sex varchar2(5) not null,
-entry_date date not null,
+entry_date timestamp not null,
 code varchar2(10) not null,
 constraints employees_enumber_pk primary key(enumber),
 constraints employees_code_fk foreign key(code) references company(code)
@@ -69,3 +69,5 @@ similarity varchar(20) not null,
 constraints result_cnumber_pk primary key(cnumber),
 constraints result_cnumber_fk foreign key(cnumber) references candidate(cnumber)
 );
+
+commit

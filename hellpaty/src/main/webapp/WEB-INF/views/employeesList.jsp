@@ -8,8 +8,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	function insertFn() {
-		location.href = "${cpath}/insertForm.do";
+	function einsertFn() {
+		location.href = "${cpath}/einsertForm.do";
 	}
 </script>
 
@@ -26,16 +26,16 @@
 		</tr>
 		<c:forEach var="vo" items="${elist}">
 			<tr>
-				<td>${vo.num}</td>
-				<td><a href="${cpath}/content.do?num=${vo.num}">${vo.name}</a></td>
-				<td>${vo.id}</td>
-				<td>${vo.email}</td>
-				<td>${vo.phone}</td>
+				<td>${vo.enumber}</td>
+				<td><a href="${cpath}/econtent.do?enumber=${vo.enumber}">${vo.dept_name}</a></td>
+				<td>${vo.name}</td>
+				<td>${vo.sex}</td>
+				<td>${vo.entry_date}</td>
 			</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="5" align="right"><input type="button" value="회원가입"
-				onclick="insertFn()" /></td>
+			<td colspan="5" align="right"><input type="button" value="현직자추가"
+				onclick="einsertFn()" /></td>
 		</tr>
 	</table>
 </body>

@@ -23,24 +23,24 @@ public class EmployeesController {
 	@RequestMapping("/elist.do")
 	public String employeesList(Model model) {
 		List<EmployeesVO> list = employeesDAO.employeesList();
-		model.addAttribute("list",list);
+		model.addAttribute("elist",list);
 		return "employeesList";
 	}
 	
 	@RequestMapping("/einsertForm.do")
 	public String employeesInsertForm() {
-		return "employees";
+		return "employeesInsert";
 	}
 	
 	@RequestMapping("/einsert.do")
 	public String employeesInsert(EmployeesVO vo) {
 		//System.out.println(vo.toString());
 		employeesDAO.employeesInsert(vo);
-		return "redirect:/list.do";
+		return "redirect:/elist.do";
 	}
 	
 	@RequestMapping("/econtent.do")
-	   public String employeesContent(@RequestParam("num") int num, Model model) {
+	   public String employeesContent(@RequestParam("enumber") int num, Model model) {
 	      //System.out.println(aaa);
 		EmployeesVO vo = employeesDAO.employeesContent(num);
 		model.addAttribute("vo",vo);
@@ -48,17 +48,17 @@ public class EmployeesController {
 	   }
 	
 	@RequestMapping("/edelete.do")
-	   public String employeesDelete(@RequestParam("num") int num) {
+	   public String employeesDelete(@RequestParam("enumber") int num) {
 	      //System.out.println(aaa);
 		employeesDAO.employeesDelete(num);
-	      return "redirect:/list.do";
+	      return "redirect:/elist.do";
 	   }
 	
 	@RequestMapping("/eupdate.do")
 	   public String employeesUpdate(EmployeesVO vo) {
 	      //System.out.println(aaa);
 		employeesDAO.employeesUpdate(vo);
-	      return "redirect:/list.do";
+	      return "redirect:/elist.do";
 	   }
 	
 //	@RequestMapping(value="/login.do", method=RequestMethod.GET)
