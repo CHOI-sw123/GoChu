@@ -1,7 +1,7 @@
 package kr.smhrd.model;
 
 public class EmployeesVO {
-	private String enumber;
+	private int enumber;
 	private String dept_name;
 	private String name;
 	private String sex;
@@ -11,7 +11,7 @@ public class EmployeesVO {
 	public EmployeesVO() {
 	}
 
-	public EmployeesVO(String enumber, String dept_name, String name, String sex, String entry_date, String code) {
+	public EmployeesVO(int enumber, String dept_name, String name, String sex, String entry_date, String code) {
 		super();
 		this.enumber = enumber;
 		this.dept_name = dept_name;
@@ -21,11 +21,11 @@ public class EmployeesVO {
 		this.code = code;
 	}
 
-	public String getEnumber() {
+	public int getEnumber() {
 		return enumber;
 	}
 
-	public void setEnumber(String enumber) {
+	public void setEnumber(int enumber) {
 		this.enumber = enumber;
 	}
 
@@ -74,6 +74,8 @@ public class EmployeesVO {
 		return "EmployeesVO [enumber=" + enumber + ", dept_name=" + dept_name + ", name=" + name + ", sex=" + sex
 				+ ", entry_date=" + entry_date + ", code=" + code + "]";
 	}
+	
+
 	
 	
 }

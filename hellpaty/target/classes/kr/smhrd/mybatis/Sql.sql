@@ -7,9 +7,11 @@ constraints company_code_pk primary key(code)
 );
 
 DROP TABLE employees cascade constraints;
+drop sequence employees_seq;
+CREATE SEQUENCE  employees_seq MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 1 ;
 
 CREATE TABLE employees
-(enumber varchar2(20) not null,
+(enumber number not null,
 dept_name varchar2(100) not null,
 name varchar2(32) not null,
 sex varchar2(5) not null,
@@ -19,16 +21,24 @@ constraints employees_enumber_pk primary key(enumber),
 constraints employees_code_fk foreign key(code) references company(code)
 );
 
+DROP TABLE companyUser cascade constraints;
+
+CREATE TABLE companyUser
+(uid varchar2(20) not null,
+upw varchar2(20) not null,
+enumber number not null,
+code varchar2(20) not null,
+constraints companyUser_id_pk primary key(uid),
+constraints companyUser_enumber_fk foreign key(enumber) references employees(enumber),
+constraints companyUser_code_fk foreign key(code) references company(code)
+);
+
 DROP TABLE manager cascade constraints;
 
 CREATE TABLE manager
-(id varchar2(20) not null,
-pw varchar2(20) not null,
-enumber varchar2(20) not null,
-code varchar2(20) not null,
-constraints manager_id_pk primary key(id),
-constraints manager_enumber_fk foreign key(enumber) references employees(enumber),
-constraints manager_code_fk foreign key(code) references company(code)
+(mid varchar2(20) not null,
+mpw varchar2(20) not null,
+constraints companyUser_id_pk primary key(mid),
 );
 
 DROP TABLE candidates cascade constraints;

@@ -2,6 +2,8 @@ package kr.smhrd.model;
 
 import java.util.List;
 
+import javax.websocket.Session;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +16,11 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 	private SqlSessionFactory sqlSessionFactory;
 	
 	@Override
-	public List<EmployeesVO> employeesList() {
+	public List<EmployeesVO> employeesList(SearchCriteria scri) {
 		SqlSession session = sqlSessionFactory.openSession();
 		List<EmployeesVO> list =null;
 		try {
-			list=session.selectList("employeesList");
+			list=session.selectList("employeesList", scri);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -26,12 +28,19 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 		}
 		return list;
 	}
-
+	
+	@Override
+	public int elistCount(SearchCriteria scri) {
+		SqlSession session = sqlSessionFactory.openSession();
+		return session.selectOne("elistCount",scri);
+	}
+	
+	
 	@Override
 	public int employeesInsert(EmployeesVO vo) {
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
-			session.insert("employeesInsert", vo);
+			session.insert("employeesInsert",vo);
 			session.commit();
 		}catch(Exception e) {
 			e.printStackTrace();

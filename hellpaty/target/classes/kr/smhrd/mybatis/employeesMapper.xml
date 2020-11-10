@@ -3,24 +3,51 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.smhrd.mybatis.employeesMapper">
-	<select id="employeesList" resultType="EmployeesVO">
-		SELECT enumber,dept_name,name,sex,TO_CHAR(entry_date,'yyyy-mm-dd') entry_date FROM employees ORDER BY entry_date DESC
+    
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'e'.toString()">AND enumber LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'd'.toString()">AND dept_name LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'n'.toString()">AND name LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 's'.toString()">AND sex LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'et'.toString()">AND entry_date LIKE '%' || #{keyword} || '%'</if>
+		</if>
+	</sql>
+    
+	<select id="employeesList" resultType="EmployeesVO"
+		parameterType="SearchCriteria">
+		SELECT enumber,dept_name,name,sex,TO_CHAR(entry_date,'yyyy-mm-dd') entry_date
+		FROM employees
+		WHERE enumber BETWEEN #{rowStart} AND #{rowEnd}
+		<include refid="search"></include>
+		ORDER BY enumber DESC
 	</select>
-	
+
+	<select id="elistCount" resultType="int" parameterType="SearchCriteria">
+		SELECT COUNT(enumber)
+		FROM employees
+		WHERE enumber > 0
+		<include refid="search"></include>
+	</select>
+
 	<insert id="employeesInsert" parameterType="EmployeesVO">
-		INSERT INTO employees VALUES(#{enumber},#{dept_name},#{name},#{sex},#{entry_date},#{code})
+		INSERT INTO employees
+		VALUES(employees_seq.nextval,#{dept_name},#{name},#{sex},#{entry_date},#{code})
 	</insert>
-	
-	<select id="employeesContent" parameterType="Integer" resultType="EmployeesVO">
+
+	<select id="employeesContent" parameterType="Integer"
+		resultType="EmployeesVO">
 		SELECT * FROM employees WHERE enumber = #{enumber}
 	</select>
-	
+
 	<delete id="employeesDelete" parameterType="Integer">
-		DELETE employees WHERE enumber=#{enumber}
+		DELETE employees
+		WHERE enumber=#{enumber}
 	</delete>
 
-	<update id="employeesUpdate" parameterType="EmployeesVO" >
-	    UPDATE employees SET dept_name=#{dept_name} WHERE enumber=#{enumber}
+	<update id="employeesUpdate" parameterType="EmployeesVO">
+		UPDATE employees SET
+		dept_name=#{dept_name} WHERE enumber=#{enumber}
 	</update>
- 
+
 </mapper>

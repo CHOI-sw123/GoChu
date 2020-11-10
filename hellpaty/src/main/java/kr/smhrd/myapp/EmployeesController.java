@@ -21,9 +21,13 @@ public class EmployeesController {
 	private EmployeesDAO employeesDAO;
 	
 	@RequestMapping("/elist.do")
-	public String employeesList(Model model) {
-		List<EmployeesVO> list = employeesDAO.employeesList();
+	public String employeesList(Model model, SearchCriteria scri) {
+		List<EmployeesVO> list = employeesDAO.employeesList(scri);
 		model.addAttribute("elist",list);
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(employeesDAO.elistCount(scri));
+		model.addAttribute("pageMaker", pageMaker);
 		return "employeesList";
 	}
 	
@@ -60,6 +64,7 @@ public class EmployeesController {
 		employeesDAO.employeesUpdate(vo);
 	      return "redirect:/elist.do";
 	   }
+
 	
 //	@RequestMapping(value="/login.do", method=RequestMethod.GET)
 //  public String loginProcess() {

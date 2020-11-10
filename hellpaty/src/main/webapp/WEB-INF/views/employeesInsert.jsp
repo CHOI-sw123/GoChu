@@ -19,10 +19,6 @@ body {
 	<form action="${cpath}/einsert.do" method="post">
 		<table border="0">
 			<tr>
-				<td>사원번호</td>
-				<td><input type="text" name="enumber"></td>
-			</tr>
-			<tr>
 				<td>부서명</td>
 				<td><input type="text" name="dept_name"></td>
 			</tr>
