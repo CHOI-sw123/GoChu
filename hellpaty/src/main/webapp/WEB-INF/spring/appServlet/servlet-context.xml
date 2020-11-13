@@ -31,7 +31,7 @@
      
 	 <beans:bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"/>
 	 
-	<context:component-scan base-package="kr.smhrd.myapp" />
+	<context:component-scan base-package="kr.smhrd.controller" />
 	<context:component-scan base-package="kr.smhrd.dao" />
 	
 </beans:beans>

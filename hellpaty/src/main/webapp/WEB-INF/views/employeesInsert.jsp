@@ -16,10 +16,8 @@ body {
 </head>
 <body>
 
-
-
 	<h2>-현직자 개별등록-</h2>
-	<form action="${cpath}/einsert.do" method="post">
+	<form action="${cpath}/einsert.do" method="POST">
 		<table border="0">
 			<tr>
 				<td>부서명</td>

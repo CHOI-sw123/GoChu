@@ -1,4 +1,4 @@
-package kr.smhrd.myapp;
+package kr.smhrd.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
