@@ -1,26 +1,27 @@
-package kr.smhrd.model;
+package kr.smhrd.dao;
 
 import java.util.List;
-
-import javax.websocket.Session;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.smhrd.vo.EmployeesVO;
+import kr.smhrd.vo.SearchCriteria;
+
+
 @Repository
 public class EmployeesDAOImpl implements EmployeesDAO {
 
 	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
-	
 	@Override
-	public List<EmployeesVO> employeesList(SearchCriteria scri) {
+	public List<EmployeesVO> employeesList(SearchCriteria cri) {
 		SqlSession session = sqlSessionFactory.openSession();
 		List<EmployeesVO> list =null;
 		try {
-			list=session.selectList("employeesList", scri);
+			list=session.selectList("elistpage", cri);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -30,11 +31,10 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 	}
 	
 	@Override
-	public int elistCount(SearchCriteria scri) {
+	public int listCount(SearchCriteria cri) {
 		SqlSession session = sqlSessionFactory.openSession();
-		return session.selectOne("elistCount",scri);
+		return session.selectOne("listCount",cri);
 	}
-	
 	
 	@Override
 	public int employeesInsert(EmployeesVO vo) {
@@ -63,6 +63,7 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 		}
 		return vo;
 	}
+	
 	@Override
 	public int employeesDelete(int num) {
 		SqlSession session = sqlSessionFactory.openSession();
@@ -89,6 +90,22 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 			session.close();
 		}
 		return 0;
+	}
+
+	@Override
+	public void insertExcel(List<EmployeesVO> list) {
+		SqlSession session = sqlSessionFactory.openSession();
+		try {
+			for(EmployeesVO vo : list) {
+			session.insert("insertExcel",vo);
+			session.commit();
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}	
+		
 	}
 
 }

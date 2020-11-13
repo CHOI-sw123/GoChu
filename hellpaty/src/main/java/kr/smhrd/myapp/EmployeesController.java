@@ -2,16 +2,16 @@ package kr.smhrd.myapp;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.smhrd.model.*;
+import kr.smhrd.dao.*;
+import kr.smhrd.vo.EmployeesVO;
+import kr.smhrd.vo.PageMaker;
+import kr.smhrd.vo.SearchCriteria;
 
 
 @Controller
@@ -21,14 +21,22 @@ public class EmployeesController {
 	private EmployeesDAO employeesDAO;
 	
 	@RequestMapping("/elist.do")
-	public String employeesList(Model model, SearchCriteria scri) {
-		List<EmployeesVO> list = employeesDAO.employeesList(scri);
+	public String employeesList(Model model, SearchCriteria cri){
+		System.out.println(cri.getPage());
+		List<EmployeesVO> list = employeesDAO.employeesList(cri);
 		model.addAttribute("elist",list);
+		
 		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(scri);
-		pageMaker.setTotalCount(employeesDAO.elistCount(scri));
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(employeesDAO.listCount(cri));
+		
 		model.addAttribute("pageMaker", pageMaker);
 		return "employeesList";
+	}
+
+	@RequestMapping("/epDown.do")
+	public String epDownload() {
+		return "epDown";
 	}
 	
 	@RequestMapping("/einsertForm.do")
@@ -64,8 +72,6 @@ public class EmployeesController {
 		employeesDAO.employeesUpdate(vo);
 	      return "redirect:/elist.do";
 	   }
-
-	
 //	@RequestMapping(value="/login.do", method=RequestMethod.GET)
 //  public String loginProcess() {
 //     return "loginForm"; //loginForm.jsp를 만들자

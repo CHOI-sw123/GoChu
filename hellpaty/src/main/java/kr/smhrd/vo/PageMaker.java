@@ -1,9 +1,12 @@
-package kr.smhrd.model;
+package kr.smhrd.vo;
+
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
+
 public class PageMaker {
 	private int totalCount;
 	private int startPage;
@@ -95,6 +98,7 @@ public class PageMaker {
 			return ""; 
 		}
 	}
+	
 	
 	
 	

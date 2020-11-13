@@ -15,6 +15,9 @@ body {
 </style>
 </head>
 <body>
+
+
+
 	<h2>-현직자 개별등록-</h2>
 	<form action="${cpath}/einsert.do" method="post">
 		<table border="0">

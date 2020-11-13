@@ -14,12 +14,15 @@ CREATE TABLE employees
 (enumber number not null,
 dept_name varchar2(100) not null,
 name varchar2(32) not null,
-sex varchar2(5) not null,
-entry_date timestamp not null,
+sex varchar2(10) not null,
+entry_date varchar2(100) not null,
 code varchar2(10) not null,
 constraints employees_enumber_pk primary key(enumber),
 constraints employees_code_fk foreign key(code) references company(code)
 );
+
+select * from employees
+delete from employees
 
 DROP TABLE companyUser cascade constraints;
 
@@ -80,4 +83,22 @@ constraints result_cnumber_pk primary key(cnumber),
 constraints result_cnumber_fk foreign key(cnumber) references candidate(cnumber)
 );
 
+
+-- 연습해본거
+--SELECT enumber,dept_name,name,sex, entry_date
+--		FROM (SELECT * FROM employees ORDER BY enumber DESC) a
+--		WHERE rownum BETWEEN 1 AND 3
+--		
+--
+--  SELECT *
+--		FROM (SELECT rownum as rnum, e.* FROM employees e ORDER BY enumber DESC) a
+--		WHERE rnum BETWEEN 11 AND 20
+--		ORDER BY enumber DESC
+				
+--				select * 
+--from (select ROWNUM as rnum, e.* 
+--from (select * from employees order by ROWNUM desc) e)
+--where rnum BETWEEN 1 AND 3
+				
+				
 commit

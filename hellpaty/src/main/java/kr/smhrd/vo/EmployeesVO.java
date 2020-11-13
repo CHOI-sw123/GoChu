@@ -1,4 +1,4 @@
-package kr.smhrd.model;
+package kr.smhrd.vo;
 
 public class EmployeesVO {
 	private int enumber;
@@ -12,7 +12,6 @@ public class EmployeesVO {
 	}
 
 	public EmployeesVO(int enumber, String dept_name, String name, String sex, String entry_date, String code) {
-		super();
 		this.enumber = enumber;
 		this.dept_name = dept_name;
 		this.name = name;

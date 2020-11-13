@@ -5,13 +5,13 @@
    xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
    http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
    
-    <context:component-scan base-package="kr.smhrd.model" />
+    <context:component-scan base-package="kr.smhrd.dao" />
     
    <!-- Root Context: defines shared resources visible to all other web components -->
    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
        <property name="dataSource" ref="dataSource"/> 
        <property name="configLocation" value="/WEB-INF/mybatis/config.xml"/> 
-       <property name="mapperLocations" value="classpath:kr/smhrd/mybatis/*.xml"/>       
+       <property name="mapperLocations" value="classpath:kr/smhrd/mybatis/*.xml"/>
    </bean>   
    
    <!--  jdbc -->
@@ -26,4 +26,11 @@
    <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations" value="/WEB-INF/mybatis/db.properties"/>        
    </bean>
+         <!-- 파일 업로드 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="100000000"/>
+        <property name="maxInMemorySize" value="100000000"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+ 
 </beans>

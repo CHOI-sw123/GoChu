@@ -3,33 +3,30 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.smhrd.mybatis.employeesMapper">
-    
-	<sql id="search">
+
+ 	 <select id="elistpage" resultType="EmployeesVO" parameterType="SearchCriteria">
+		select * 
+from (select ROWNUM as rnum, e.* 
+from (select * from employees WHERE enumber > 0 <include refid="search"></include> order by ROWNUM desc) e)
+where rnum BETWEEN #{rowStart} AND #{rowEnd}
+	 </select> 
+
+ 	 	<select id="listCount" resultType="int" parameterType="SearchCriteria">
+		SELECT COUNT(enumber)
+		   FROM employees
+		   WHERE enumber > 0
+			<include refid="search"></include>	
+	</select>
+	
+ 	 <sql id="search">
 		<if test="searchType != null">
-			<if test="searchType == 'e'.toString()">AND enumber LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'd'.toString()">AND dept_name LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'n'.toString()">AND name LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 's'.toString()">AND sex LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'et'.toString()">AND entry_date LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 't'.toString()">AND dept_name LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND name LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND sex LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'tc'.toString()">AND entry_date LIKE '%' || #{keyword} || '%'</if>
 		</if>
 	</sql>
-    
-	<select id="employeesList" resultType="EmployeesVO"
-		parameterType="SearchCriteria">
-		SELECT enumber,dept_name,name,sex,TO_CHAR(entry_date,'yyyy-mm-dd') entry_date
-		FROM employees
-		WHERE enumber BETWEEN #{rowStart} AND #{rowEnd}
-		<include refid="search"></include>
-		ORDER BY enumber DESC
-	</select>
-
-	<select id="elistCount" resultType="int" parameterType="SearchCriteria">
-		SELECT COUNT(enumber)
-		FROM employees
-		WHERE enumber > 0
-		<include refid="search"></include>
-	</select>
-
+ 	 
 	<insert id="employeesInsert" parameterType="EmployeesVO">
 		INSERT INTO employees
 		VALUES(employees_seq.nextval,#{dept_name},#{name},#{sex},#{entry_date},#{code})
@@ -50,4 +47,9 @@
 		dept_name=#{dept_name} WHERE enumber=#{enumber}
 	</update>
 
+	<!-- 데이터 삽입 -->
+	<insert id="insertExcel" parameterType="EmployeesVO">
+		INSERT INTO employees
+		VALUES(employees_seq.nextval,#{dept_name},#{name},#{sex},#{entry_date},#{code})
+	</insert>
 </mapper>

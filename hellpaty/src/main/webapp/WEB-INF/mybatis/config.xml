@@ -4,9 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
  <typeAliases>
-     <typeAlias type="kr.smhrd.model.EmployeesVO" alias="EmployeesVO"/>
-     <typeAlias type="kr.smhrd.model.Criteria" alias="Criteria"/>
-     <typeAlias type="kr.smhrd.model.PageMaker" alias="PageMaker"/>
-     <typeAlias type="kr.smhrd.model.SearchCriteria" alias="SearchCriteria"/>
+     <typeAlias type="kr.smhrd.vo.EmployeesVO" alias="EmployeesVO"/>
+     <typeAlias type="kr.smhrd.vo.PageMaker" alias="PageMaker"/>
+     <typeAlias type="kr.smhrd.vo.Criteria" alias="Criteria"/>
+     <typeAlias type="kr.smhrd.vo.SearchCriteria" alias="SearchCriteria"/>
  </typeAliases>
 </configuration>

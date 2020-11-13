@@ -1,17 +1,17 @@
-package kr.smhrd.model;
+package kr.smhrd.vo;
 
 public class Criteria {
-	private int page;
-	private int perPageNum;
-	private int rowStart;
-	private int rowEnd;
+	private int page; //현재페이지
+	private int perPageNum; //페이지에 나올 내용 갯수
+	private int rowStart; //시작페이지
+	private int rowEnd; //마지막페이지
 	
 	public Criteria() {
-		this.page = 1;
-		this.perPageNum = 10;
+		this.page = 1; //기본페이지 1
+		this.perPageNum = 10; // 한 페이지에 10개 출력
 	}
 	
-	public void setPage(int page) {
+	public void setPage(int page) { //내용 0개이하여도 기본 1페이지 
 		if (page <= 0) {
 			this.page = 1;
 			return;

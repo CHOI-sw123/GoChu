@@ -1,6 +1,6 @@
-package kr.smhrd.model;
+package kr.smhrd.vo;
 
-public class SearchCriteria extends Criteria {
+public class SearchCriteria extends Criteria{
 	private String searchType = "";
 	private String keyword = "";
 	 
