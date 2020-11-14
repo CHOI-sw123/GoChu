@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.smhrd.vo.EmployeesVO;
 
 @Service
-public class ExcelDAOImpl {
+public class epExcelDAOImpl {
 
 	@Autowired
 	private EmployeesDAO employeesDAO;
@@ -53,7 +53,7 @@ public class ExcelDAOImpl {
                 if(null != cell) vo.setCode(cell.getStringCellValue());
                 list.add(vo);
             }
-            employeesDAO.insertExcel(list);
+            employeesDAO.epInsertExcel(list);
         } catch (Exception e) {
             e.printStackTrace();
         }

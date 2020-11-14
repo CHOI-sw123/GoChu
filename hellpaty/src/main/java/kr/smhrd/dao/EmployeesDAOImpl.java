@@ -21,7 +21,7 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 		SqlSession session = sqlSessionFactory.openSession();
 		List<EmployeesVO> list =null;
 		try {
-			list=session.selectList("elistpage", cri);
+			list=session.selectList("eListpage", cri);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -31,9 +31,9 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 	}
 	
 	@Override
-	public int listCount(SearchCriteria cri) {
+	public int epListCount(SearchCriteria cri) {
 		SqlSession session = sqlSessionFactory.openSession();
-		return session.selectOne("listCount",cri);
+		return session.selectOne("epListCount",cri);
 	}
 	
 	@Override
@@ -93,11 +93,11 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 	}
 
 	@Override
-	public void insertExcel(List<EmployeesVO> list) {
+	public void epInsertExcel(List<EmployeesVO> list) {
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
 			for(EmployeesVO vo : list) {
-			session.insert("insertExcel",vo);
+			session.insert("epInsertExcel",vo);
 			session.commit();
 			}
 		}catch(Exception e) {

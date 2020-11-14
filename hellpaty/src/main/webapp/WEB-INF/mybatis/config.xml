@@ -5,8 +5,10 @@
 <configuration>
  <typeAliases>
      <typeAlias type="kr.smhrd.vo.EmployeesVO" alias="EmployeesVO"/>
+     <typeAlias type="kr.smhrd.vo.CandidatesVO" alias="CandidatesVO"/>
      <typeAlias type="kr.smhrd.vo.PageMaker" alias="PageMaker"/>
      <typeAlias type="kr.smhrd.vo.Criteria" alias="Criteria"/>
      <typeAlias type="kr.smhrd.vo.SearchCriteria" alias="SearchCriteria"/>
+     <typeAlias type="kr.smhrd.vo.MemberVO" alias="MemberVO"/>
  </typeAliases>
 </configuration>

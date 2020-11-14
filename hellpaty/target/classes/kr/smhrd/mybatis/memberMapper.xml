@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.mybatis.memberMapper">
+    
+     <select id = "Id_Check" resultType="int">
+        <!-- 검색을 하는데 갯수를 출력해라 MEMBER 테이블에 해당하는 테이블의 별칭은 m으로 선언한다. -->
+        select count(*) from companyUser m
+        <!-- 검색을 하는데 m테이블에 m_id 는 매개변수로 받아온 m_id와 동일해야 한다. -->
+        where m.cpuid = #{cpuid}
+        <!-- 결과 : 0이면 아이디 중복 x 1이면 중복 검색 결과가 없으면 0으로 나옴 아래는 다 생략 동일하니-->
+    </select>
+    
+    <insert id = 'register' parameterType="MemberVO">
+        INSERT INTO companyUser
+        VALUES (#{cpuid}, #{cpupw}, #{code})
+    </insert>
+    
+    <select id = "login" resultType="int">
+        select count(*) from companyUser m
+        where m.cpuid = #{cpuid} and m.cpupw = #{cpupw}
+    </select>
+    
+    <select id = "Login_Info" resultType="MemberVO">
+        select * from companyUser m
+        where m.cpuid = #{cpuid} and m.cpupw = #{cpupw}
+    </select>
+
+</mapper>

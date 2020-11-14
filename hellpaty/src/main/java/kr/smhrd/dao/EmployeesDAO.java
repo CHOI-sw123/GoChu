@@ -11,6 +11,6 @@ public int employeesInsert(EmployeesVO vo);
 public EmployeesVO employeesContent(int num);
 public int employeesDelete(int num);
 public int employeesUpdate(EmployeesVO vo);
-public void insertExcel(List<EmployeesVO> list);
-public int listCount(SearchCriteria cri);
+public void epInsertExcel(List<EmployeesVO> list);
+public int epListCount(SearchCriteria cri);
 }

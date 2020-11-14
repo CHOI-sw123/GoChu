@@ -28,7 +28,7 @@ public class EmployeesController {
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(employeesDAO.listCount(cri));
+		pageMaker.setTotalCount(employeesDAO.epListCount(cri));
 		
 		model.addAttribute("pageMaker", pageMaker);
 		return "employeesList";

@@ -1,3 +1,5 @@
+select * from all_objects where object_type = 'TABLE'
+
 DROP TABLE company cascade constraints;
 
 CREATE TABLE company
@@ -25,37 +27,42 @@ select * from employees
 delete from employees
 
 DROP TABLE companyUser cascade constraints;
+--enumber number not null,--
 
 CREATE TABLE companyUser
-(uid varchar2(20) not null,
-upw varchar2(20) not null,
-enumber number not null,
+(cpuid varchar2(20) not null,
+cpupw varchar2(20) not null,
 code varchar2(20) not null,
-constraints companyUser_id_pk primary key(uid),
-constraints companyUser_enumber_fk foreign key(enumber) references employees(enumber),
+constraints companyUser_id_pk primary key(cpuid),
 constraints companyUser_code_fk foreign key(code) references company(code)
 );
+
+select * from companyUser
 
 DROP TABLE manager cascade constraints;
 
 CREATE TABLE manager
-(mid varchar2(20) not null,
-mpw varchar2(20) not null,
-constraints companyUser_id_pk primary key(mid),
+(mngid varchar2(20) not null,
+mngpw varchar2(20) not null,
+constraints manager_id_pk primary key(mngid)
 );
 
 DROP TABLE candidates cascade constraints;
+drop sequence candidates_seq;
+CREATE SEQUENCE  candidates_seq MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 1 ;
 
 CREATE TABLE candidates
-(cnumber varchar2(20) not null,
+(cnumber number not null,
 name varchar2(20) not null,
 sex varchar2(5) not null,
-handwriting_c varchar2(100) not null,
-apply_date date not null,
+--handwriting_c varchar2(100),
+apply_date varchar2(100) not null,
 code varchar2(10) not null,
 constraints candidates_cnumber_pk primary key(cnumber),
 constraints candidates_code_fk foreign key(code) references company(code)
 );
+
+select * from candidates
 
 DROP TABLE characters cascade constraints;
 
@@ -99,6 +106,8 @@ constraints result_cnumber_fk foreign key(cnumber) references candidate(cnumber)
 --from (select ROWNUM as rnum, e.* 
 --from (select * from employees order by ROWNUM desc) e)
 --where rnum BETWEEN 1 AND 3
-				
+--						SELECT COUNT(enumber)
+--		   FROM employees
+--		   WHERE enumber > 0
 				
 commit

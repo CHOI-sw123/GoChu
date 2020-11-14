@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.mybatis.candidatesMapper">
+
+ 	 <select id="cListpage" resultType="CandidatesVO" parameterType="SearchCriteria">
+		select * 
+from (select ROWNUM as rnum, e.* 
+from (select * from candidates WHERE cnumber > 0 <include refid="search"></include> order by ROWNUM desc) e)
+where rnum BETWEEN #{rowStart} AND #{rowEnd}
+	 </select> 
+
+ 	 	<select id="cdListCount" resultType="int" parameterType="SearchCriteria">
+		SELECT COUNT(cnumber)
+		   FROM candidates
+		   WHERE cnumber > 0
+			<include refid="search"></include>	
+	</select>
+	
+ 	 <sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND name LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND sex LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND apply_date LIKE '%' || #{keyword} || '%'</if>
+		</if>
+	</sql>
+ 	 
+	<insert id="candidatesInsert" parameterType="CandidatesVO">
+		INSERT INTO candidates
+		VALUES(candidates_seq.nextval,#{name},#{sex},#{apply_date},#{code})
+	</insert>
+
+	<delete id="candidatesDelete" parameterType="Integer">
+		DELETE candidates
+		WHERE cnumber=#{cnumber}
+	</delete>
+
+	<!-- 데이터 삽입 -->
+	<insert id="cdInsertExcel" parameterType="CandidatesVO">
+		INSERT INTO candidates
+		VALUES(candidates_seq.nextval,#{name},#{sex},#{apply_date},#{code})
+	</insert>
+</mapper>

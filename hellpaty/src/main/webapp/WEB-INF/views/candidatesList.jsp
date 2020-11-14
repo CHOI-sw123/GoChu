@@ -13,7 +13,7 @@
 	function doExcelUploadProcess() {
 		var f = new FormData(document.getElementById('form2'));
 		$.ajax({
-			url : "${cpath}/epExcelUp.do",
+			url : "${cpath}/cdExcelUp.do",
 			data : f,
 			processData : false,
 			contentType : false,
@@ -22,25 +22,25 @@
 				console.log(data);
 				//document.getElementById('result').innerHTML = JSON.stringify(data);
 				alert("업로드성공");
-				location.href = "${cpath}/elist.do";
+				location.href = "${cpath}/clist.do";
 			}
 		})
 	}
 
-	function einsertFn() {
-		location.href = "${cpath}/einsertForm.do";
+	function cinsertFn() {
+		location.href = "${cpath}/cinsertForm.do";
 	}
 
-	function excelDown() {
+	function cdExcelDown() {
 		var f = document.form1;
-		f.action = "${cpath}/epDown.do";
+		f.action = "${cpath}/cdDown.do";
 		f.submit();
 	}
 
 	$(function() {
 		$('#searchBtn').click(
 				function() {
-					self.location = "elist.do" + '${pageMaker.makeQuery(1)}'
+					self.location = "clist.do" + '${pageMaker.makeQuery(1)}'
 							+ "&searchType="
 							+ $("select option:selected").val() + "&keyword="
 							+ encodeURIComponent($('#keywordInput').val());
@@ -51,23 +51,21 @@
 		f.action = "${cpath}/elist.do";
 		f.submit();
 	}
-
 	function candidateslogin() {
-		var f1 = document.form20;
-		f1.action = "${cpath}/clist.do";
-		f1.submit();
+		var f = document.form20;
+		f.action = "${cpath}/clist.do";
+		f.submit();
 	}
 	function resultlogin() {
-		var f1 = document.form30;
-		f1.action = "${cpath}/result.do";
-		f1.submit();
+		var f = document.form30;
+		f.action = "${cpath}/result.do";
+		f.submit();
 	}
 	function mainlogin() {
 		var f = document.form100;
 		f.action = "${cpath}/main.do";
 		f.submit();
 	}
-
 </script>
 
 <style type="text/css">
@@ -86,7 +84,8 @@ li {
 		<!-- 세션 스코프를 통해 m으로 선언된 변수명에 m_id를 찾아서 출력 -->
         ${m.cpuid}님 안녕하세요. <br>
         <a href = "${cpath}/logout.do">로그아웃</a>
-	<h2>- 현직자 리스트보기 -</h2>
+
+	<h2>- 지원자 리스트보기 -</h2>
 
 	<table style="text-align: center;">
 		<form name="form10" method="post">
@@ -105,13 +104,11 @@ li {
 						<option value="n"
 							<c:out value="${cri.searchType == null ? 'selected' : ''}"/>>-----</option>
 						<option value="t"
-							<c:out value="${cri.searchType eq 't' ? 'selected' : ''}"/>>부서명</option>
+							<c:out value="${cri.searchType eq 't' ? 'selected' : ''}"/>>이름</option>
 						<option value="c"
-							<c:out value="${cri.searchType eq 'c' ? 'selected' : ''}"/>>이름</option>
+							<c:out value="${cri.searchType eq 'c' ? 'selected' : ''}"/>>성별</option>
 						<option value="w"
-							<c:out value="${cri.searchType eq 'w' ? 'selected' : ''}"/>>성별</option>
-						<option value="tc"
-							<c:out value="${cri.searchType eq 'tc' ? 'selected' : ''}"/>>입사일</option>
+							<c:out value="${cri.searchType eq 'w' ? 'selected' : ''}"/>>지원일</option>
 					</select> <input type="text" name="keyword" id="keywordInput"
 						value="${cri.keyword}" />
 
@@ -119,31 +116,29 @@ li {
 				</div>
 			</td>
 		</tr>
-		<FORM name='frm' method='GET' action="${cpath}/elist.do">
+		<FORM name='frm' method='GET' action="${cpath}/clist.do">
 			<tr>
 				<td colspan="5" align="right"></td>
 			</tr>
 
 			<tr bgcolor="gray">
-				<td>사원번호</td>
-				<td>부서명</td>
+				<td>지원번호</td>
 				<td>이름</td>
 				<td>성별</td>
-				<td>입사일</td>
+				<td>지원일</td>
 			</tr>
-			<c:forEach var="vo" items="${elist}">
+			<c:forEach var="vo" items="${clist}">
 				<tr>
-					<td>${vo.enumber}</td>
-					<td>${vo.dept_name}</td>
-					<td><a href="${cpath}/econtent.do?enumber=${vo.enumber}">${vo.name}</a></td>
+					<td>${vo.cnumber}</td>
+					<td>${vo.name}</td>
 					<td>${vo.sex}</td>
-					<td>${vo.entry_date}</td>
+					<td>${vo.apply_date}</td>
 				</tr>
 			</c:forEach>
 		</FORM>
 		<tr>
 			<td align="right"><input type="button" value="개별등록"
-				onclick="einsertFn()" /></td>
+				onclick="cinsertFn()" /></td>
 			<td colspan="3" align="right">
 
 				<form id="form2" name="form2" method="post"
@@ -157,7 +152,7 @@ li {
 		<tr>
 			<td colspan="5" align="right">
 				<form name="form1" method="post">
-					<input type="button" value="excel down" onClick="excelDown()" />
+					<input type="button" value="excel down" onClick="cdExcelDown()" />
 				</form>
 			</td>
 		</tr>
@@ -167,17 +162,17 @@ li {
 					<ul>
 						<c:if test="${pageMaker.prev}">
 							<li><a
-								href="elist.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+								href="clist.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
 						</c:if>
 
 						<c:forEach begin="${pageMaker.startPage}"
 							end="${pageMaker.endPage}" var="idx">
-							<li><a href="elist.do${pageMaker.makeSearch(idx)}">${idx}</a></li>
+							<li><a href="clist.do${pageMaker.makeSearch(idx)}">${idx}</a></li>
 						</c:forEach>
 
 						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 							<li><a
-								href="elist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+								href="clist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
 						</c:if>
 					</ul>
 				</div>

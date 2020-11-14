@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import kr.smhrd.dao.ExcelDAOImpl;
+import kr.smhrd.dao.epExcelDAOImpl;
 import kr.smhrd.vo.EmployeesVO;
 
 
 @Controller
-public class ExcelController{
+public class epExcelController{
 	
 	@Autowired
-	private ExcelDAOImpl excelDAOImpl;
+	private epExcelDAOImpl excelDAOImpl;
 	
-	@RequestMapping(value = "/excelUp.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/epExcelUp.do", method = RequestMethod.POST)
     public String uploadExcelFile(MultipartHttpServletRequest request, Model model) {
     	System.out.println("OK");
 		MultipartFile file = null;

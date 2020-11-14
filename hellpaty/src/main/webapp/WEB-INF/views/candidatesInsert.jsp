@@ -16,12 +16,8 @@ body {
 </head>
 <body>
 	<h2>-현직자 개별등록-</h2>
-	<form action="${cpath}/einsert.do" method="POST">
+	<form action="${cpath}/cinsert.do" method="POST">
 		<table border="0">
-			<tr>
-				<td>부서명</td>
-				<td><input type="text" name="dept_name"></td>
-			</tr>
 			<tr>
 				<td>이름</td>
 				<td><input type="text" name="name"></td>
@@ -33,7 +29,7 @@ body {
 			</tr>
 			<tr>
 				<td>입사일</td>
-				<td><input type="date" name="entry_date"></td>
+				<td><input type="date" name="apply_date"></td>
 			</tr>
 			<tr>
 				<td>회사코드</td>
