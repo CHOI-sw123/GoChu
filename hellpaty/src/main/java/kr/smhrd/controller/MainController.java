@@ -23,4 +23,12 @@ public class MainController {
 	public String result() {
 		return "result";
 	}
+	@RequestMapping("/resultDuty.do")
+	public String resultDuty() {
+		return "resultDuty";
+	}
+	@RequestMapping("/resultCandidate.do")
+	public String resultCandidate() {
+		return "resultCandidate";
+	}
 }

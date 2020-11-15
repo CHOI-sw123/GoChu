@@ -47,19 +47,39 @@
 				});
 	});
 	function employeeslogin() {
+		//javascript session get
 		var f = document.form10;
-		f.action = "${cpath}/elist.do";
+		if("${m.cpuid}"==""){
+		f.action = "${cpath}/memberlogin.do";
 		f.submit();
+		}
+		else{
+			f.action = "${cpath}/elist.do";
+			f.submit();
+		}
 	}
 	function candidateslogin() {
 		var f = document.form20;
+		if("${m.cpuid}"==""){
+			f.action = "${cpath}/memberlogin.do";
+			f.submit();
+			}
+		else{
 		f.action = "${cpath}/clist.do";
 		f.submit();
+		}
 	}
+	
 	function resultlogin() {
 		var f = document.form30;
+		if("${m.cpuid}"==""){
+			f.action = "${cpath}/memberlogin.do";
+			f.submit();
+			}
+			else{
 		f.action = "${cpath}/result.do";
 		f.submit();
+		}
 	}
 	function mainlogin() {
 		var f = document.form100;

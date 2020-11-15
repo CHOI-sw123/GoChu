@@ -6,9 +6,13 @@
 
  	 <select id="eListpage" resultType="EmployeesVO" parameterType="SearchCriteria">
 		select * 
-from (select ROWNUM as rnum, e.* 
-from (select * from employees WHERE enumber > 0 <include refid="search"></include> order by ROWNUM desc) e)
-where rnum BETWEEN #{rowStart} AND #{rowEnd}
+			from (select ROWNUM as rnum, e.* 
+				from (select * from employees 
+					WHERE
+					enumber > 0 
+					<include refid="search"></include> order by ROWNUM desc)
+					 e)
+			where rnum BETWEEN #{rowStart} AND #{rowEnd}
 	 </select> 
 
  	 	<select id="epListCount" resultType="int" parameterType="SearchCriteria">

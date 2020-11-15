@@ -12,32 +12,51 @@
 
 <script type="text/javascript">
 	function employeeslogin() {
+		//javascript session get
 		var f = document.form1;
-		f.action = "${cpath}/elist.do";
+		if("${m.cpuid}"==""){
+		f.action = "${cpath}/memberlogin.do";
 		f.submit();
+		}
+		else{
+			f.action = "${cpath}/elist.do";
+			f.submit();
+		}
 	}
 	
 	function candidateslogin() {
-		var f1 = document.form2;
-		f1.action = "${cpath}/clist.do";
-		f1.submit();
+		var f = document.form2;
+		if("${m.cpuid}"==""){
+			f.action = "${cpath}/memberlogin.do";
+			f.submit();
+			}
+		else{
+		f.action = "${cpath}/clist.do";
+		f.submit();
+		}
 	}
 	
 	function resultlogin() {
-		var f1 = document.form3;
-		f1.action = "${cpath}/result.do";
-		f1.submit();
+		var f = document.form3;
+		if("${m.cpuid}"==""){
+			f.action = "${cpath}/memberlogin.do";
+			f.submit();
+			}
+			else{
+		f.action = "${cpath}/result.do";
+		f.submit();
+		}
 	}
 	function membership() {
-		var f1 = document.form4;
-		f1.action = "${cpath}/membership.do";
-		f1.submit();
+		var f = document.form4;
+		f.action = "${cpath}/membership.do";
+		f.submit();
 	}
 	
 	function memberlogin() {
-		var f1 = document.form5;
-		f1.action = "${cpath}/memberlogin.do";
-		f1.submit();
+		var f = document.form5;
+		f.action = "${cpath}/memberlogin.do";
+		f.submit();
 	}
 
 </script>

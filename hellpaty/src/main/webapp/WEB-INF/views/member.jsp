@@ -25,42 +25,85 @@ body {
         
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
         <script>
-            $(document).ready(function(){
-                $("#register_process").click(function(){
-                    var json = {
-                    		cpuid : $("#cpuid").val(),
-                    		cpupw : $("#cpupw").val(),
-                        	code : $("#code").val()
-                    };
-                    
-                    for(var str in json){
-                        if(json[str].length == 0){
-                            alert($("#" + str).attr("placeholder") + "를 입력해주세요.");
-                            $("#" + str).focus();
-                            return;
-                        }
+        $(document).ready(function(){
+            $("#register_process").click(function(){
+                var json = {
+                		cpuid : $("#cpuid").val(),
+                		cpupw : $("#cpupw").val(),
+                		code : $("#code").val()
+                };
+                
+                for(var str in json){
+                    if(json[str].length == 0){
+                        alert($("#" + str).attr("placeholder") + "를 입력해주세요.");
+                        $("#" + str).focus();
+                        return;
                     }
-                     $.ajax({
-                        type : "post",
-                        url : "${cpath}/register.do",
-                        data : json,
-                        success : function(data) {
-                            switch (number(data)) {
-                            case 0:
-                                alert("정상적으로 회원가입 되었습니다.");
-                                location.href = "${cpath}/memberLogin.do";
-                                break;
-                            case 1:
-                                alert("아이디가 중복 되었습니다.");
-                                break;
-                            default:
-                                alert("알수없는 오류가 발생 했습니다. [Error Code :" + number(data) + "]");
-                                break;
-                            }
-                        },
-                    });
+                }
+                 $.ajax({
+                    type : "post",
+                    url : "${cpath}/register.do",
+                    data : json,
+                    success : 
+                    	alert("정상적으로 회원가입 되었습니다."),
+                    error : function(error) {
+                    	alert("오류 발생"+ error)
+                    }
                 });
-            });
+        })
+        $("#cpuid").keyup(function() {
+			$.ajax({
+				url : "${cpath}/register.do",
+				type : "POST",
+				data : {
+					id : $("#cpuid").val()
+				},
+				success : function(result) {
+					if (result == 1) {
+						("중복된 아이디가 있습니다.");
+					}
+				},
+			})
+		});
+            $("#code").keyup(function() {
+    			$.ajax({
+    				url : "${cpath}/register.do",
+    				type : "POST",
+    				data : {
+    					id : $("#code").val()
+    				},
+    				success : function(result) {
+    					if (result == 0) {
+    						("등록된 기업이 아닙니다.");
+    					}
+    				},
+    			})
+    		});
+        });
+        
         </script>
 </body>
 </html>
+
+<%--                     success : function(data) {
+                        switch (data.length) {
+                        case 0:
+                            alert("정상적으로 회원가입 되었습니다.");
+                            location.href = "${cpath}/memberLogin.do";
+                            break;
+                        case 1:
+                            alert("아이디가 중복 되었습니다.");
+                            break;
+                     default:
+                            alert("알수없는 오류가 발생 했습니다. [Error Code :" + Number(data) + "]");
+                            break;
+                        }
+                    }, 
+                    
+                    if(${m.cpuid}.val() == null) {
+                    		
+                    		};
+                    	else {
+                    		alert("이미 등록된 아이디입니다.")
+                    		};,
+                    --%>

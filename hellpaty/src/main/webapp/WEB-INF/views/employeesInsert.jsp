@@ -37,7 +37,7 @@ body {
 			</tr>
 			<tr>
 				<td>회사코드</td>
-				<td><input type="text" name="code"></td>
+				<td><input type="text" name="code" value="${m.code}"/></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
