@@ -37,10 +37,9 @@ public class epExcelDAOImpl {
                 if(null == row) {
                     continue;
                 }
-                
                 // 행의 첫번째 열 
                 XSSFCell cell = row.getCell(0);
-                if(null != cell) vo.setDept_name(cell.getStringCellValue());
+                if(null != cell) vo.setDuty(cell.getStringCellValue());
                 // 행의 두번째 열 받아오기
                 cell = row.getCell(1);
                 if(null != cell) vo.setName(cell.getStringCellValue());
@@ -48,8 +47,6 @@ public class epExcelDAOImpl {
                 cell = row.getCell(2);
                 if(null != cell) vo.setSex(cell.getStringCellValue());
                 cell = row.getCell(3);
-                if(null != cell) vo.setEntry_date(cell.getStringCellValue());
-                cell = row.getCell(4);
                 if(null != cell) vo.setCode(cell.getStringCellValue());
                 list.add(vo);
             }

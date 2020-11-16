@@ -119,7 +119,7 @@
     
     <a href = "${cpath}/resultDuty.do">직무별</a>
     <a href = "${cpath}/resultCandidate.do">지원자별</a>
-    
+    <a href = "${cpath}/resultDetails.do">세부정보</a>
 </body>
 
 <script type="text/javascript">

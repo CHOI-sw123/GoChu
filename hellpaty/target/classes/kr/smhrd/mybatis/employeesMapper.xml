@@ -24,16 +24,15 @@
 	
  	 <sql id="search">
 		<if test="searchType != null">
-			<if test="searchType == 't'.toString()">AND dept_name LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 't'.toString()">AND duty LIKE '%' || #{keyword} || '%'</if>
 			<if test="searchType == 'c'.toString()">AND name LIKE '%' || #{keyword} || '%'</if>
 			<if test="searchType == 'w'.toString()">AND sex LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'tc'.toString()">AND entry_date LIKE '%' || #{keyword} || '%'</if>
 		</if>
 	</sql>
  	 
 	<insert id="employeesInsert" parameterType="EmployeesVO">
 		INSERT INTO employees
-		VALUES(employees_seq.nextval,#{dept_name},#{name},#{sex},#{entry_date},#{code})
+		VALUES(employees_seq.nextval,#{dept_name},#{name},#{sex},#{code})
 	</insert>
 
 	<select id="employeesContent" parameterType="Integer"
@@ -48,12 +47,12 @@
 
 	<update id="employeesUpdate" parameterType="EmployeesVO">
 		UPDATE employees SET
-		dept_name=#{dept_name} WHERE enumber=#{enumber}
+		duty=#{duty} WHERE enumber=#{enumber}
 	</update>
 
 	<!-- 데이터 삽입 -->
 	<insert id="epInsertExcel" parameterType="EmployeesVO">
 		INSERT INTO employees
-		VALUES(employees_seq.nextval,#{dept_name},#{name},#{sex},#{entry_date},#{code})
+		VALUES(employees_seq.nextval,#{duty},#{name},#{sex},#{code})
 	</insert>
 </mapper>

@@ -22,13 +22,12 @@ where rnum BETWEEN #{rowStart} AND #{rowEnd}
 		<if test="searchType != null">
 			<if test="searchType == 't'.toString()">AND name LIKE '%' || #{keyword} || '%'</if>
 			<if test="searchType == 'c'.toString()">AND sex LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'w'.toString()">AND apply_date LIKE '%' || #{keyword} || '%'</if>
 		</if>
 	</sql>
  	 
 	<insert id="candidatesInsert" parameterType="CandidatesVO">
 		INSERT INTO candidates
-		VALUES(candidates_seq.nextval,#{name},#{sex},#{apply_date},#{code})
+		VALUES(candidates_seq.nextval,#{name},#{sex},#{code})
 	</insert>
 
 	<delete id="candidatesDelete" parameterType="Integer">
@@ -39,6 +38,6 @@ where rnum BETWEEN #{rowStart} AND #{rowEnd}
 	<!-- 데이터 삽입 -->
 	<insert id="cdInsertExcel" parameterType="CandidatesVO">
 		INSERT INTO candidates
-		VALUES(candidates_seq.nextval,#{name},#{sex},#{apply_date},#{code})
+		VALUES(candidates_seq.nextval,#{name},#{sex},#{code})
 	</insert>
 </mapper>

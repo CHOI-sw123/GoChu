@@ -31,4 +31,8 @@ public class MainController {
 	public String resultCandidate() {
 		return "resultCandidate";
 	}
+	@RequestMapping("/resultDetails.do")
+	public String resultDetails() {
+		return "resultDetails";
+	}
 }

@@ -19,8 +19,8 @@ body {
 	<form action="${cpath}/einsert.do" method="POST">
 		<table border="0">
 			<tr>
-				<td>부서명</td>
-				<td><input type="text" name="dept_name"></td>
+				<td>직무</td>
+				<td><input type="text" name="duty"></td>
 			</tr>
 			<tr>
 				<td>이름</td>
@@ -30,10 +30,6 @@ body {
 				<td>성별</td>
 				<td>남자<input name="sex" type="radio" value="남">
 					여자<input name="sex" type="radio" value="여"></td>
-			</tr>
-			<tr>
-				<td>입사일</td>
-				<td><input type="date" name="entry_date"></td>
 			</tr>
 			<tr>
 				<td>회사코드</td>

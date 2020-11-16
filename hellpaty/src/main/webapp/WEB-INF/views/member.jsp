@@ -44,43 +44,15 @@ body {
                     type : "post",
                     url : "${cpath}/register.do",
                     data : json,
-                    success : 
-                    	alert("정상적으로 회원가입 되었습니다."),
+                    success : function(){
+                    	alert("정상적으로 회원가입 되었습니다.");
+                    },
                     error : function(error) {
-                    	alert("오류 발생"+ error)
+                    	alert("오류 발생"+ error);
                     }
                 });
         })
-        $("#cpuid").keyup(function() {
-			$.ajax({
-				url : "${cpath}/register.do",
-				type : "POST",
-				data : {
-					id : $("#cpuid").val()
-				},
-				success : function(result) {
-					if (result == 1) {
-						("중복된 아이디가 있습니다.");
-					}
-				},
-			})
-		});
-            $("#code").keyup(function() {
-    			$.ajax({
-    				url : "${cpath}/register.do",
-    				type : "POST",
-    				data : {
-    					id : $("#code").val()
-    				},
-    				success : function(result) {
-    					if (result == 0) {
-    						("등록된 기업이 아닙니다.");
-    					}
-    				},
-    			})
-    		});
-        });
-        
+
         </script>
 </body>
 </html>

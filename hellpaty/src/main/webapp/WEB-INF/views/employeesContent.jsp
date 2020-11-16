@@ -28,10 +28,9 @@
 				<td>${vo.enumber}</td>
 			</tr>
 			<tr>
-				<td>부서명</td>
-				<td><input type='text' name='dept_name' value='${vo.dept_name}' /></td>
+				<td>직무</td>
+				<td><input type='text' name='dept_name' value='${vo.duty}' /></td>
 			</tr>
-			<tr>
 			<tr>
 				<td>이름</td>
 				<td>${vo.name}</td>
@@ -41,17 +40,15 @@
 				<td>${vo.sex}</td>
 			</tr>
 			<tr>
-				<td>입사일</td>
-				<td>${vo.entry_date}'</td>
-			<tr>
-			<tr>
 				<td>회사코드</td>
 				<td>${vo.code}'</td>
+				</tr>
 			<tr>
-				<td align='center' colspan='2'><input type="submit" value='수정'/> <input
-					type='button' value='삭제' onclick="edeleteFn(${vo.enumber})" /> <input
-					type='reset' value='취소' /> <input type='button' value='리스트'
-					onclick="elistFn()" /></td>
+				<td align='center' colspan='2'>
+				<input type="submit" value='수정'/> 
+				<input type='button' value='삭제' onclick="edeleteFn(${vo.enumber})"/> 
+				<input type='button' value='취소'  onclick="elistFn()"/> 
+				</td>
 			</tr>
 		</table>
 	</form>

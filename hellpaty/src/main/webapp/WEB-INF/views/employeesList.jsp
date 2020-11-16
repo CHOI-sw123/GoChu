@@ -125,13 +125,11 @@ li {
 						<option value="n"
 							<c:out value="${cri.searchType == null ? 'selected' : ''}"/>>-----</option>
 						<option value="t"
-							<c:out value="${cri.searchType eq 't' ? 'selected' : ''}"/>>부서명</option>
+							<c:out value="${cri.searchType eq 't' ? 'selected' : ''}"/>>직무</option>
 						<option value="c"
 							<c:out value="${cri.searchType eq 'c' ? 'selected' : ''}"/>>이름</option>
 						<option value="w"
 							<c:out value="${cri.searchType eq 'w' ? 'selected' : ''}"/>>성별</option>
-						<option value="tc"
-							<c:out value="${cri.searchType eq 'tc' ? 'selected' : ''}"/>>입사일</option>
 					</select> <input type="text" name="keyword" id="keywordInput"
 						value="${cri.keyword}" />
 
@@ -146,18 +144,16 @@ li {
 
 			<tr bgcolor="gray">
 				<td>사원번호</td>
-				<td>부서명</td>
+				<td>직무</td>
 				<td>이름</td>
 				<td>성별</td>
-				<td>입사일</td>
 			</tr>
 			<c:forEach var="vo" items="${elist}">
 				<tr>
 					<td>${vo.enumber}</td>
-					<td>${vo.dept_name}</td>
+					<td>${vo.duty}</td>
 					<td><a href="${cpath}/econtent.do?enumber=${vo.enumber}">${vo.name}</a></td>
 					<td>${vo.sex}</td>
-					<td>${vo.entry_date}</td>
 				</tr>
 			</c:forEach>
 		</FORM>
