@@ -28,10 +28,6 @@ body {
 					여자<input name="sex" type="radio" value="여"></td>
 			</tr>
 			<tr>
-				<td>입사일</td>
-				<td><input type="date" name="apply_date"></td>
-			</tr>
-			<tr>
 				<td>회사코드</td>
 				<td><input type="text" name="code"></td>
 			</tr>

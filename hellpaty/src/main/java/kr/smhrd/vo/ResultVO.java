@@ -1,15 +1,15 @@
 package kr.smhrd.vo;
 
-public class CandidatesVO {
+public class ResultVO {
 	private int cnumber;
 	private String name;
 	private String sex;
 	private String handwriting_c;
 	private String code;
-	public CandidatesVO() {
+	public ResultVO() {
 		super();
 	}
-	public CandidatesVO(int cnumber, String name, String sex, String handwriting_c, String code) {
+	public ResultVO(int cnumber, String name, String sex, String handwriting_c, String code) {
 		super();
 		this.cnumber = cnumber;
 		this.name = name;

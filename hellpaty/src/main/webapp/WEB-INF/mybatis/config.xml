@@ -10,5 +10,6 @@
      <typeAlias type="kr.smhrd.vo.Criteria" alias="Criteria"/>
      <typeAlias type="kr.smhrd.vo.SearchCriteria" alias="SearchCriteria"/>
      <typeAlias type="kr.smhrd.vo.MemberVO" alias="MemberVO"/>
+     <typeAlias type="kr.smhrd.vo.ResultVO" alias="ResultVO"/>
  </typeAliases>
 </configuration>

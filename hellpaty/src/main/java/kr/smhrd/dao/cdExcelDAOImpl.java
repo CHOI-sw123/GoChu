@@ -46,9 +46,9 @@ public class cdExcelDAOImpl {
                 if(null != cell) vo.setSex(cell.getStringCellValue());
                 // 행의 세번째 열 받아오기
                 cell = row.getCell(2);
-                if(null != cell) vo.setApply_date(cell.getStringCellValue());
-                cell = row.getCell(3);
                 if(null != cell) vo.setCode(cell.getStringCellValue());
+                cell = row.getCell(3);
+                if(null != cell) vo.setHandwriting_c(cell.getStringCellValue());
                 list.add(vo);
             }
             candidatesDAO.cdInsertExcel(list);

@@ -19,10 +19,7 @@ public class MainController {
 	public String memberLogin() {
 		return "memberLogin";
 	}
-	@RequestMapping("/result.do")
-	public String result() {
-		return "result";
-	}
+
 	@RequestMapping("/resultDuty.do")
 	public String resultDuty() {
 		return "resultDuty";
@@ -36,3 +33,7 @@ public class MainController {
 		return "resultDetails";
 	}
 }
+/*@RequestMapping("/result.do")
+public String result() {
+	return "result";
+}*/

@@ -74,7 +74,7 @@ CREATE SEQUENCE candidates_seq MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WI
 CREATE TABLE candidates
 (cnumber number not null,    --지원자 고유번호
 name varchar2(20) not null,  --지원자 이름
-sex varchar2(5) not null,    --지원자 성별
+sex varchar2(10) not null,    --지원자 성별
 handwriting_c varchar2(1000), --지원자 필체이미지
 code varchar2(10) not null,  --지원한 기업 코드
 constraints candidates_cnumber_pk primary key(cnumber),

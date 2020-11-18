@@ -2,6 +2,7 @@ package kr.smhrd.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +15,6 @@ import kr.smhrd.vo.*;
 
 @Controller
 public class CandidatesController {
-	
 	@Autowired
 	private CandidatesDAO candidatesDAO;
 	
@@ -23,7 +23,6 @@ public class CandidatesController {
 		System.out.println(cri.getPage());
 		List<CandidatesVO> list = candidatesDAO.candidatesList(cri);
 		model.addAttribute("clist",list);
-		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(candidatesDAO.cdListCount(cri));

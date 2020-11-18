@@ -27,7 +27,7 @@ where rnum BETWEEN #{rowStart} AND #{rowEnd}
  	 
 	<insert id="candidatesInsert" parameterType="CandidatesVO">
 		INSERT INTO candidates
-		VALUES(candidates_seq.nextval,#{name},#{sex},#{code})
+		VALUES(candidates_seq.nextval,#{name},#{sex},#{handwriting_c},#{code})
 	</insert>
 
 	<delete id="candidatesDelete" parameterType="Integer">
@@ -38,6 +38,6 @@ where rnum BETWEEN #{rowStart} AND #{rowEnd}
 	<!-- 데이터 삽입 -->
 	<insert id="cdInsertExcel" parameterType="CandidatesVO">
 		INSERT INTO candidates
-		VALUES(candidates_seq.nextval,#{name},#{sex},#{code})
+		VALUES(candidates_seq.nextval,#{name},#{sex},#{handwriting_c},#{code})
 	</insert>
 </mapper>

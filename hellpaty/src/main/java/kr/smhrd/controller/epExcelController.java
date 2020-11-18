@@ -35,6 +35,4 @@ public class epExcelController{
         model.addAttribute("list", list);
         return "jsonView";
     }
-
-
 }

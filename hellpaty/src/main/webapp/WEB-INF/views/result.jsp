@@ -54,7 +54,7 @@
         ${m.cpuid}님 안녕하세요. <br>
         <a href = "${cpath}/logout.do">로그아웃</a>
 <h1>분석하기</h1>
-<table>
+	<table>
 		<form name="form10" method="post">
 			<input type="button" value="현직자" onClick="employeeslogin()" />
 		</form>
@@ -66,54 +66,23 @@
 		</form>
 		</table>
 		
-		    <!-- 첫 번째 Modal을 여는 클래스 -->
-    <h1 class="btn">그룹등록</h1>
- 
-    <!-- 첫 번째 Modal -->
-    <div class="modal">
- 
-      <!-- 첫 번째 Modal의 내용 -->
-      <div class="modal-content">
-        <span class="close">&times;</span>      
-        <select>
-        <option>오늘도</option>
-        <option>꿀빨기성공</option>
-        <option>집에</option>
-        <option>가자</option>
-        </select>                   
-        <p><input type="checkbox"/>최성우</p>
-        <p><input type="checkbox"/>최성우</p>
-        <p><input type="checkbox"/>최성우</p>
-        <p><input type="checkbox"/>최성우</p>
-        <p><input type="checkbox"/>최성우</p>
-        <p><input type="checkbox"/>최성우</p>
-        <p><input type="checkbox"/>최성우</p>
-      </div>
-    </div>
- 
     <hr>
     <!-- 두 번째 Modal을 여는 클래스 -->
     <h1 class="btn">개별등록</h1>
  
     <!-- 두 번째 Modal -->
     <div class="modal">
- 
+
       <!-- 두 번째 Modal의 내용 -->
       <div class="modal-content">
+      <input type="text"/><input type="button" value="검색"/>
         <span class="close">&times;</span>
-           <select>
-        <option>오늘도</option>
-        <option>꿀빨기성공</option>
-        <option>집에</option>
-        <option>가자</option>
-        </select>
-        <p><input type="checkbox"/>최성우</p>
-        <p><input type="checkbox"/>최성우</p>
-        <p><input type="checkbox"/>최성우</p>
-        <p><input type="checkbox"/>최성우</p>
-        <p><input type="checkbox"/>최성우</p>
-        <p><input type="checkbox"/>최성우</p>
-        <p><input type="checkbox"/>최성우</p>
+        <form action="${cpath}/result.do" method="POST">
+	        <c:forEach var="vo" items="${rlist}">
+	       	 <p><input type="checkbox"/>${vo.name}</p>
+	        </c:forEach>
+	        <input type="submit" value="등록"/>
+		</form>
       </div>
     </div>
     

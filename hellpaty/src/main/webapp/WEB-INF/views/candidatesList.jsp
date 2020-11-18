@@ -127,8 +127,6 @@ li {
 							<c:out value="${cri.searchType eq 't' ? 'selected' : ''}"/>>이름</option>
 						<option value="c"
 							<c:out value="${cri.searchType eq 'c' ? 'selected' : ''}"/>>성별</option>
-						<option value="w"
-							<c:out value="${cri.searchType eq 'w' ? 'selected' : ''}"/>>지원일</option>
 					</select> <input type="text" name="keyword" id="keywordInput"
 						value="${cri.keyword}" />
 
@@ -145,14 +143,12 @@ li {
 				<td>지원번호</td>
 				<td>이름</td>
 				<td>성별</td>
-				<td>지원일</td>
 			</tr>
 			<c:forEach var="vo" items="${clist}">
 				<tr>
 					<td>${vo.cnumber}</td>
 					<td>${vo.name}</td>
 					<td>${vo.sex}</td>
-					<td>${vo.apply_date}</td>
 				</tr>
 			</c:forEach>
 		</FORM>
