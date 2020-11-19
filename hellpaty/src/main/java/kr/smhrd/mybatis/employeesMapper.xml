@@ -5,7 +5,7 @@
 <mapper namespace="kr.smhrd.mybatis.employeesMapper">
 
  	 <select id="eListpage" resultType="EmployeesVO" parameterType="SearchCriteria">
-		select * 
+		select enumber,duty,name,sex,code
 			from (select ROWNUM as rnum, e.* 
 				from (select * from employees 
 					WHERE

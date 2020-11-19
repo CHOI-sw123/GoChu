@@ -6,4 +6,9 @@
  	 <select id="candidateResultList" resultType="CandidatesVO">
 		select name from candidates
 	 </select> 
+	 
+ 	     <select id = "rlogin" resultType="int">
+        select count(*) from candidates
+        where name = #{name}
+    </select>
 </mapper>

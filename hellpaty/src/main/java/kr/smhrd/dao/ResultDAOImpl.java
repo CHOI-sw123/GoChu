@@ -2,6 +2,8 @@ package kr.smhrd.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +30,18 @@ public class ResultDAOImpl implements ResultDAO {
 		}
 		return list;
 	}
+	
+    public int rlogin(CandidatesVO m, HttpSession Hsession) {
+    	SqlSession session = sqlSessionFactory.openSession();
+    	
+            try {
+            CandidatesVO m_info = session.selectOne("rlogin", m);
+            Hsession.setAttribute("rm", m_info);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+            return 1;
+    }
 }

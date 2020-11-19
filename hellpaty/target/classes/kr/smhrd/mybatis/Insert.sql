@@ -8,10 +8,10 @@ insert into employees values(employees_seq.nextval,'기획','hansung','여','han
 insert into employees values(employees_seq.nextval,'디자인','huyngjun','남','huyngjun',40,38,42,45,33,30,35,41,18,'test2','char_id');
 insert into employees values(employees_seq.nextval,'개발','jungwook','여','jungwook',25,15,45,25,35,35,40,21,23,'test2','char_id');
 
-insert into candidate values(candidates_seq.nextval,'최성우','남','이미지1','test1');
-insert into candidate values(candidates_seq.nextval,'박한성','여','이미지2','test1');
-insert into candidate values(candidates_seq.nextval,'김형준','남','이미지3','test2');
-insert into candidate values(candidates_seq.nextval,'정정욱','여','이미지4','test2');
+insert into candidates values(candidates_seq.nextval,'csw','남','이미지1','test1');
+insert into candidates values(candidates_seq.nextval,'phs','여','이미지2','test1');
+insert into candidates values(candidates_seq.nextval,'khj','남','이미지3','test2');
+insert into candidates values(candidates_seq.nextval,'jjw','여','이미지4','test2');
 
 insert into companyUser values('testid1',1234,'test1');
 insert into companyUser values('testid2',1234,'test2');
@@ -20,13 +20,6 @@ insert into candidates values(candidates_seq.nextval,'최성우','남','image','
 insert into candidates values(candidates_seq.nextval,'박한성','여','image','test1');
 insert into candidates values(candidates_seq.nextval,'김형준','남','image','test1');
 insert into candidates values(candidates_seq.nextval,'정정욱','여','image','test1');
-
-
-
-
-
-
-
 
 commit
 

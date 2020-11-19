@@ -2,13 +2,15 @@
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <link rel="stylesheet" href="css/style.css">
+    
 <style type="text/css">
+
         .modal {
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
@@ -21,6 +23,7 @@
             background-color: rgb(0,0,0); /* Fallback color */
             background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
         }
+        
         /* Modal Content/Box */
         .modal-content {
             background-color: #fefefe;
@@ -29,6 +32,7 @@
             border: 1px solid #888;
             width: 50%; /* Could be more or less, depending on screen size */
         }
+        
         /* The Close Button */
         .close {
             color: #aaa;
@@ -36,12 +40,14 @@
             font-size: 28px;
             font-weight: bold;
         }
+        
         .close:hover,
         .close:focus {
             color: black;
             text-decoration: none;
             cursor: pointer;
         }
+        
 </style>
 
 </head>
@@ -77,18 +83,19 @@
       <div class="modal-content">
       <input type="text"/><input type="button" value="검색"/>
         <span class="close">&times;</span>
-        <form action="${cpath}/result.do" method="POST">
+        <form id="frmReq" action="localhost:9000/" method="POST">
 	        <c:forEach var="vo" items="${rlist}">
-	       	 <p><input type="checkbox"/>${vo.name}</p>
+	       	 <p><input type="checkbox" name="rlist" value="${vo.name}"/>${vo.name}</p>
 	        </c:forEach>
-	        <input type="submit" value="등록"/>
+	        <input id="btn" type="submit" name="btn" value="등록"/>
 		</form>
       </div>
     </div>
-    
     <a href = "${cpath}/resultDuty.do">직무별</a>
     <a href = "${cpath}/resultCandidate.do">지원자별</a>
     <a href = "${cpath}/resultDetails.do">세부정보</a>
+   <c:forEach var="vo" items="${rm}"> 
+   ${vo.name}</c:forEach>
 </body>
 
 <script type="text/javascript">
@@ -175,6 +182,6 @@ window.onclick = function(event) {
   }
 };
 
-</script>
 
+</script>
 </html>

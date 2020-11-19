@@ -73,14 +73,25 @@ width: 214px;
 	<div id ="three_menu" style="left: 35px;"/>
 	<a href="./memberList.jsp"><div><img src="<spring:url value='/resources/image/first_side_menu.png'/>" style="margin-top: 10px;"></div></a>
 	<a href="##"><div><img src="<spring:url value='/resources/image/second_side_menu.png'/>"></div></a>
-	<a href="##"><div><img style="bottom: 5px;" src="<spring:url value='/resources/image/three_side_menu.png'/>"style="margin-top: 10px;">
+	<a href="##"><div><img style="bottom: 5px;" src="<spring:url value='/resources/image/three_side_menu.png'/>"style="margin-top: 10px;"></a>
 	</div>
+
+
+
+
+
+
 
 
  <h3>## 로그인 페이지 ##</h3>
         <input type = "text" id = "cpuid" placeholder="아이디"><br>
         <input type = "password" id = "cpupw" placeholder="비밀번호"><br>
         <button id = "login_process">로그인</button>
+        
+        
+        
+        
+        
         
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
         <script>
