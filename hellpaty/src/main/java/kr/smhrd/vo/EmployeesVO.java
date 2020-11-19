@@ -16,12 +16,13 @@ public class EmployeesVO {
 	private int char_7;
 	private int char_8;
 	private int char_9;
-	private int char_id;
+	private String char_id;
 	public EmployeesVO() {
 	}
 	public EmployeesVO(int enumber, String duty, String name, String sex, String code, String handwriting_e, int char_1,
 			int char_2, int char_3, int char_4, int char_5, int char_6, int char_7, int char_8, int char_9,
-			int char_id) {
+			String char_id) {
+		super();
 		this.enumber = enumber;
 		this.duty = duty;
 		this.name = name;
@@ -129,10 +130,10 @@ public class EmployeesVO {
 	public void setChar_9(int char_9) {
 		this.char_9 = char_9;
 	}
-	public int getChar_id() {
+	public String getChar_id() {
 		return char_id;
 	}
-	public void setChar_id(int char_id) {
+	public void setChar_id(String char_id) {
 		this.char_id = char_id;
 	}
 	@Override
@@ -142,6 +143,8 @@ public class EmployeesVO {
 				+ char_3 + ", char_4=" + char_4 + ", char_5=" + char_5 + ", char_6=" + char_6 + ", char_7=" + char_7
 				+ ", char_8=" + char_8 + ", char_9=" + char_9 + ", char_id=" + char_id + "]";
 	}
+
+	
 	
 	
 	

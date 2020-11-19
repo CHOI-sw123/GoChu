@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@taglib  prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <!DOCTYPE html>
@@ -47,35 +48,131 @@
             text-decoration: none;
             cursor: pointer;
         }
+ 
+ body {
+	margin: 0px;
+	height: 680px;
+}
+
+#menu_bar img {
+	margin: 0px;
+	padding: 0px;
+	height: 59rem;
+	width: 300px;
+	margin-left: -20px;
+}
+
+#total_menu_bar {
+	height: 60rem;
+	width: 280px;;
+	display: flex;
+}
+
+#menu_bar_sub img {
+	margin: 0px;
+	padding: 0px;
+	height: 59rem;
+	width: 180%;
+}
+
+#menu_total {
+	position: relative;
+	bottom: 955px;
+	margin-bottom: 0%;
+	left: 45px;
+	height: 500px;
+	width: 214px;
+}
+
+#three_menu {
+	position: relative;
+	bottom: 1119px;
+	left: 51;
+	width: 214px;
+}
+
+#member_side {
+	margin-top: 90px;
+	margin-left: 105px;
+}
+
+ul {
+	display: flex;
+	list-style: none;
+	position: relative;
+	bottom: 405px;
+}
+
+ul li {
+	margin-left: 92px;
+	align-content: center;
+}
+
+#bottom_menu {
+	position: relative;
+	bottom: 89px;
+	display: flex;
+}
+
+#number img {
+	padding-left: 7px;
+}       
         
 </style>
 
 </head>
 
 <body>
-<form name="form100" method="post">
-		<input type="button" value="로고" onClick="mainlogin()" />
-	</form>
-<!-- 세션 스코프를 통해 m으로 선언된 변수명에 m_id를 찾아서 출력 -->
-        ${m.cpuid}님 안녕하세요. <br>
-        <a href = "${cpath}/logout.do">로그아웃</a>
-<h1>분석하기</h1>
-	<table>
-		<form name="form10" method="post">
-			<input type="button" value="현직자" onClick="employeeslogin()" />
-		</form>
-		<form name="form20" method="post">
-			<input type="button" value="지원자" onClick="candidateslogin()" />
-		</form>
-		<form name="form30" method="post">
-			<input type="button" value="분석하기" onClick="resultlogin()" />
-		</form>
-		</table>
+
+	<div id="total_menu_bar">
+		<div id="menu_bar">
+		<span style="position: absolute;top: 214px;left: 10px;">${m.cpuid}</span>
+			<img src="<spring:url value='/resources/image/menu_bar.png'/>">
+		</div>
+		<img style="height: 945px;" src="<spring:url value='/resources/image/bunseock_side.png'/>">
+		<div id="member_side">
+			<img src="<spring:url value='/resources/image/boonseock.png'/>" /> 
 		
-    <hr>
+			<img src="<spring:url value='/resources/image/check_upload.png'/>">
+				
+				<div style="width: 200px;position: relative;left: 821px;bottom: 282px;">
+              <a href="${cpath}/resultCandidate.do"><div><img  src="<spring:url value='/resources/image/members.png'/>"/></div></a>
+               <a href="${cpath}/resultDuty.do"><div><img  src="<spring:url value='/resources/image/inmembers.png'/>"/></div></a>
+           </div>
+           
+			<p style="width: 800px; margin-left: 125px; position: relative; bottom: 96px;">
+				<a class="btn"><img src="<spring:url value='/resources/image/gruop_load.png'/>"></a> 
+				<a href="##"><img style="margin-left: 208px;" src="<spring:url value='/resources/image/solo_load.png'/>"></a>
+			</p>
+		</div>
+	</div>
+
+	<div id="menu_total">
+		<a href="${cpath}/main.do"><div>
+				<img src="<spring:url value='/resources/image/Logo_sub.png'/>" style="margin-bottom: 165px;">
+			</div></a> <a href="${cpath}/logout.do"><div id="logout">
+				<img src="<spring:url value='/resources/image/logout.png'/>"
+					style="margin-left: 13px; margin-top: 4px;">
+			</div></a>
+	</div>
+	</a>
+
+	<div id="three_menu" style="left: 35px;" />
+	<a href="${cpath}/clist.do"><div>
+			<img src="<spring:url value='/resources/image/first_side_menu.png'/>" style="margin-top: 10px;">
+		</div></a>
+	<a href="${cpath}/elist.do"><div>
+			<img src="<spring:url value='/resources/image/second_side_menu.png'/>">
+		</div></a>
+	<a href="${cpath}/result.do"><div>
+			<img style="bottom: 5px;" src="<spring:url value='/resources/image/three_side_menu.png'/>"
+				style="margin-top: 10px;"></a>
+		</div>
+
+<!-- --------------------------------------------------------------------------------------- -->
+		
     <!-- 두 번째 Modal을 여는 클래스 -->
-    <h1 class="btn">개별등록</h1>
- 
+     
     <!-- 두 번째 Modal -->
     <div class="modal">
 
@@ -85,17 +182,13 @@
         <span class="close">&times;</span>
         <form id="frmReq" action="localhost:9000/" method="POST">
 	        <c:forEach var="vo" items="${rlist}">
-	       	 <p><input type="checkbox" name="rlist" value="${vo.name}"/>${vo.name}</p>
+	       	 <p><input type="checkbox" name="rlist" value="${vo.handwriting_c}" />${vo.name}</p>
 	        </c:forEach>
 	        <input id="btn" type="submit" name="btn" value="등록"/>
 		</form>
       </div>
     </div>
-    <a href = "${cpath}/resultDuty.do">직무별</a>
-    <a href = "${cpath}/resultCandidate.do">지원자별</a>
-    <a href = "${cpath}/resultDetails.do">세부정보</a>
-   <c:forEach var="vo" items="${rm}"> 
-   ${vo.name}</c:forEach>
+
 </body>
 
 <script type="text/javascript">

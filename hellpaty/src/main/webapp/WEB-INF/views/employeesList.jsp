@@ -119,9 +119,9 @@ body {
 
 #menu_total {
 	position: relative;
-	bottom: 1007px;
-	margin-bottom: 0%;
-	left: 45px;
+	bottom: 1010px;
+	margin: 0;
+	left:5px;
 	height: 500px;
 	width: 214px;
 }
@@ -147,6 +147,7 @@ margin-left: 105px;
     background-color: rgb(0,0,0,0);
   
 }
+
 #keywordInput{
 position: relative;
  bottom: 34px;
@@ -176,7 +177,7 @@ text-align: center
 
 #bottom_menu{
  position: relative;
- bottom: 180px;
+ bottom: 160px;
  left: 10px;
  display: flex;
 }
@@ -203,7 +204,7 @@ border-radius:0;
 }
 
 #paging{
-bottom: 320px;
+bottom: 250px;
 left: 300px;
 }
 
@@ -220,9 +221,6 @@ left: 100px;
 		<div id="menu_bar">
 			<img src="<spring:url value='/resources/image/menu_bar.png'/>">
 	</div>	
-		<div id="menu_bar_sub">
-			<img src="<spring:url value='/resources/image/login_side_bar.png'/>">
-		</div>	
 				<div id ="member_side">
 		<img src="<spring:url value='/resources/image/Inmembership.png'/>"/><br/>
 	
@@ -243,7 +241,7 @@ left: 100px;
 				</div>
 			<!-- <input type="button"> -->
 		<FORM name='frm' method='GET' action="${cpath}/elist.do">
-			<img src="<spring:url value='/resources/image/bottom.png'/>">
+			<img src="<spring:url value='/resources/image/employees.png'/>">
 			<!-- 			<ul>
 				<li style="margin-left: 47px;">지원번호</li>
 				<li >직무</li>
@@ -253,23 +251,22 @@ left: 100px;
 			</ul> -->
 			<c:forEach var="vo" items="${elist}">
 			<ul height="10px">
-				<li><span style="width:25px">${vo.enumber}</span></li>
-				<li><span style="width:34px">${vo.duty}</span></li>
-				<li><span style="width:50px">${vo.name}</span></li>
-				<li><span style="width:50px">${vo.sex}</span></li>
-				<li><span style="width:50px">${vo.code}</span></li>
+				<li><span style="width:150px">${vo.enumber}</span></li>
+				<li><span style="width:150px">${vo.duty}</span></li>
+				<li><span style="width:150px">${vo.name}</span></li>
+				<li><span style="width:200px">${vo.sex}</span></li>
+				<li><span style="width:150px">${vo.code}</span></li>
 			</ul>
 			</c:forEach>
 		</form>
 		<div id="bottom_menu">
-		<div>
+		<div><form id="form2" name="form2" method="post" enctype="multipart/form-data">
 			<a type="button" onclick="einsertFn()">
 			<img  src="<spring:url value='/resources/image/pice_upload.png'/>"></a>
-				<form id="form2" name="form2" method="post" enctype="multipart/form-data">
+				
 					<input type="file" id="fileInput" name="fileInput" style='display: none;'>
 						<img  src="<spring:url value='/resources/image/file_choice.png'/>" onclick='document.all.fileInput.click();'></input>
 					<a type="button" onclick="doExcelUploadProcess()"><img  src="<spring:url value='/resources/image/ex_upload.png'/>"></a>
-			
 			</form>
 			<form name="form1" method="post">
 					<a id="exceldown" type="button" value="excel down" onClick="excelDown()">
@@ -307,7 +304,7 @@ left: 100px;
 				<div id="menu_total">
 	<a href="${cpath}/main.do"><div ><img src="<spring:url value='/resources/image/Logo_sub.png'/>" style="margin-bottom: 165px; "></div></a>
 	<p id="cpuid">${m.cpuid}</p>
-	<a href="${cpath}/logout.do"><div id="logout"><img src="<spring:url value='/resources/image/logout.png'/>" style="margin-left: 13px; margin-top: 2px;"></div></a>
+	<a href="${cpath}/logout.do"><div id="logout" style="left:45px;  position: fixed; bottom:645px;"><img src="<spring:url value='/resources/image/logout.png'/>" style="margin-left: 13px; margin-top: 2px;"></div></a>
 	</div>
 	
 	<div id ="three_menu" style="left: 35px;"/>

@@ -53,6 +53,6 @@
 	<!-- 데이터 삽입 -->
 	<insert id="epInsertExcel" parameterType="EmployeesVO">
 		INSERT INTO employees
-		VALUES(employees_seq.nextval,#{duty},#{name},#{sex},#{code})
+		VALUES(employees_seq.nextval,#{duty},#{name},#{sex},#{handwriting_e},#{char_1},#{char_2},#{char_3},#{char_4},#{char_5},#{char_6},#{char_7},#{char_8},#{char_9},#{code},#{char_id})
 	</insert>
 </mapper>

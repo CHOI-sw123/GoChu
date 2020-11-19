@@ -1,5 +1,6 @@
 insert into company values('test1','testcom1');
 insert into company values('test2','testcom2');
+insert into company values('smhrd','스마트미디어인재개발원');
 
 insert into characters values('char_id','image1','image2','image3','image4','image5','image6','image7','image8','image9');
 
@@ -15,6 +16,7 @@ insert into candidates values(candidates_seq.nextval,'jjw','여','이미지4','t
 
 insert into companyUser values('testid1',1234,'test1');
 insert into companyUser values('testid2',1234,'test2');
+insert into companyUser values('hyanunblira',1234,'test1');
 
 insert into candidates values(candidates_seq.nextval,'최성우','남','image','test1');
 insert into candidates values(candidates_seq.nextval,'박한성','여','image','test1');

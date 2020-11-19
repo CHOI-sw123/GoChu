@@ -47,7 +47,31 @@ public class epExcelDAOImpl {
                 cell = row.getCell(2);
                 if(null != cell) vo.setSex(cell.getStringCellValue());
                 cell = row.getCell(3);
+                if(null != cell) vo.setHandwriting_e(cell.getStringCellValue());
+                cell = row.getCell(4);
+                if(null != cell) vo.setChar_1((int)cell.getNumericCellValue() );
+                cell = row.getCell(5);
+                if(null != cell) vo.setChar_2((int)cell.getNumericCellValue() );
+                cell = row.getCell(6);
+                if(null != cell) vo.setChar_3((int)cell.getNumericCellValue() );
+                cell = row.getCell(7);
+                if(null != cell) vo.setChar_4((int)cell.getNumericCellValue() );
+                cell = row.getCell(8);
+                if(null != cell) vo.setChar_5((int)cell.getNumericCellValue() );
+                cell = row.getCell(9);
+                if(null != cell) vo.setChar_6((int)cell.getNumericCellValue() );
+                cell = row.getCell(10);
+                if(null != cell) vo.setChar_7((int)cell.getNumericCellValue() );
+                cell = row.getCell(11);
+                if(null != cell) vo.setChar_8((int)cell.getNumericCellValue() );
+                cell = row.getCell(12);
+                if(null != cell) vo.setChar_9((int)cell.getNumericCellValue() );
+                cell = row.getCell(13);
                 if(null != cell) vo.setCode(cell.getStringCellValue());
+                cell = row.getCell(14);
+                if(null != cell) vo.setChar_id(cell.getStringCellValue());
+                
+                
                 list.add(vo);
             }
             employeesDAO.epInsertExcel(list);
