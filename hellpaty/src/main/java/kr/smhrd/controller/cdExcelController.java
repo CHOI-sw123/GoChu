@@ -23,6 +23,7 @@ public class cdExcelController{
 	private cdExcelDAOImpl excelDAOImpl;
 	
 	@RequestMapping(value = "/cdExcelUp.do", method = RequestMethod.POST)
+	//엑셀파일 업로드 컨트롤러
     public String uploadExcelFile(MultipartHttpServletRequest request, Model model) {
     	System.out.println("OK");
 		MultipartFile file = null;
@@ -30,9 +31,11 @@ public class cdExcelController{
         if(iterator.hasNext()) {
             file = request.getFile(iterator.next());
         }
+	    //여기있는 기능을 씀
         List<CandidatesVO> list = excelDAOImpl.uploadExcelFile(file);
         
         model.addAttribute("list", list);
+	    //jsonview 형태로 반환
         return "jsonView";
     }
 
