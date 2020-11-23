@@ -3,6 +3,28 @@
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@taglib  prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
+
+<%@ page import="java.util.*" %>
+<%@ page import="com.google.gson.Gson"%>
+<%@ page import="com.google.gson.JsonObject"%>
+ 
+<%
+Gson gsonObj = new Gson();
+Map<Object,Object> map = null;
+List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
+ 
+map = new HashMap<Object,Object>(); map.put("label", "Brazil"); map.put("y", 104); list.add(map);
+map = new HashMap<Object,Object>(); map.put("label", "China"); map.put("y", 153); list.add(map);
+map = new HashMap<Object,Object>(); map.put("label", "India"); map.put("y", 69); list.add(map);
+map = new HashMap<Object,Object>(); map.put("label", "Japan"); map.put("y", 166); list.add(map);
+map = new HashMap<Object,Object>(); map.put("label", "Korea, Rep"); map.put("y", 146); list.add(map);
+map = new HashMap<Object,Object>(); map.put("label", "Russia"); map.put("y", 61); list.add(map);
+map = new HashMap<Object,Object>(); map.put("label", "South Africa"); map.put("y", 78); list.add(map);
+map = new HashMap<Object,Object>(); map.put("label", "United Kingdom"); map.put("y", 135); list.add(map);
+ 
+String dataPoints = gsonObj.toJson(list);
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -149,83 +171,7 @@ span p{
 		</div>
 		<img style="height: 945px;" src="<spring:url value='/resources/image/bunseock_side.png'/>">
 		<div id="member_side">
-			<img  src="<spring:url value='/resources/image/member_title.PNG'/>">
-
-				<ul class="grapn">
-				<li>
-				
-				<div>
-					<span style=" height: 43% ">
-					<p >43%</p>
-					</span>
-					
-				</div>
-				<p>사용자1</p>
-				</li>
-				<li>
-				
-				<div>
-					<span style=" height: 54%; ">
-					<p >54%</p>
-					</span>
-					
-				</div>
-				<p>사용자2</p>
-				</li>
-				<li>
-				
-				<div>
-					<span style=" height: 49%; "><p >49%</p></span>
-				</div>
-				<p>사용자3</p>
-				</li>
-				<li>
-				
-				<div>
-					<span style=" height: 11%; "><p >11%</p></span>
-				</div>
-				<p>사용자4</p>
-				</li>
-				<li>
-				
-				<div>
-					<span style=" height: 50%; "><p >50%</p></span>
-				</div>
-				<p>사용자5</p>
-				</li>
-				<li>
-				
-				<div>
-					<span style=" height: 60%; "><p >60%</p></span>
-				</div>
-				<p>사용자6</p>
-				</li>
-				<li>
-				
-				<div>
-					<span style=" height: 38%; "><p >38%</p></span>
-				</div>
-				<p>사용자7</p>
-				</li>
-				<li>
-				
-				<div>
-					<span style=" height: 56%; "><p >56%</p></span>
-				</div>
-				<p>사용자8</p>
-				</li>
-				<li>
-				
-				<div>
-					<span style=" height: 7%; "><p >7%</p></span>
-				</div>
-				<p>사용자9</p>
-				</li>
-				
-				
-				</ul>
-
-		</div>
+			<div id="chartContainer" style="height: 500px; width: 800ps; padding-top: 200px"></div>
 
 	</div>
 
@@ -253,4 +199,30 @@ span p{
 				style="margin-top: 10px;">
 		</div>
 </body>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+window.onload = function() { 
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: "Deposit Money Banks' Assets to GDP (percent), 2015"
+	},
+	axisY: {
+		suffix: "%",
+		includeZero: true
+	},
+	axisX: {
+		title: "Countries"
+	},
+	data: [{
+		type: "column",
+		yValueFormatString: "#,##0\"%\"",
+		dataPoints: <%out.print(dataPoints);%>
+	}]
+});
+chart.render();
+ 
+}
+</script>
 </html>
