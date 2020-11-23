@@ -13,14 +13,12 @@ Gson gsonObj = new Gson();
 Map<Object,Object> map = null;
 List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
  
-map = new HashMap<Object,Object>(); map.put("label", "Brazil"); map.put("y", 104); list.add(map);
-map = new HashMap<Object,Object>(); map.put("label", "China"); map.put("y", 153); list.add(map);
-map = new HashMap<Object,Object>(); map.put("label", "India"); map.put("y", 69); list.add(map);
-map = new HashMap<Object,Object>(); map.put("label", "Japan"); map.put("y", 166); list.add(map);
-map = new HashMap<Object,Object>(); map.put("label", "Korea, Rep"); map.put("y", 146); list.add(map);
-map = new HashMap<Object,Object>(); map.put("label", "Russia"); map.put("y", 61); list.add(map);
-map = new HashMap<Object,Object>(); map.put("label", "South Africa"); map.put("y", 78); list.add(map);
-map = new HashMap<Object,Object>(); map.put("label", "United Kingdom"); map.put("y", 135); list.add(map);
+map = new HashMap<Object,Object>(); map.put("label", "no.1"); map.put("y", request.getAttribute("csw")); list.add(map);
+map = new HashMap<Object,Object>(); map.put("label", "no.2"); map.put("y", request.getAttribute("phs")); list.add(map);
+map = new HashMap<Object,Object>(); map.put("label", "no.3"); map.put("y", request.getAttribute("khj")); list.add(map);
+map = new HashMap<Object,Object>(); map.put("label", "no.4"); map.put("y", request.getAttribute("jjw")); list.add(map);
+map = new HashMap<Object,Object>(); map.put("label", "no.5"); map.put("y", request.getAttribute("a")); list.add(map);
+
  
 String dataPoints = gsonObj.toJson(list);
 %>
