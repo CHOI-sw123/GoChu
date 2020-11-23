@@ -52,7 +52,7 @@ public class PageMaker {
 	public Criteria getCri() {
 		return cri;
 	}
-	 
+	 //페이징 기능 구현을위한 함수
 	private void calcData() {
 		endPage = (int) (Math.ceil(cri.getPage() / (double)displayPageNum) * displayPageNum);
 		startPage = (endPage - displayPageNum) + 1;
