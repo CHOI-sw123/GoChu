@@ -11,17 +11,18 @@
         where m.cpuid = #{cpuid}
         <!-- 결과 : 0이면 아이디 중복 x 1이면 중복 검색 결과가 없으면 0으로 나옴 아래는 다 생략 동일하니-->
     </select>
-    
+    <!-- 회원가입-->
     <insert id = 'register' parameterType="MemberVO">
         INSERT INTO companyUser
         VALUES (#{cpuid}, #{cpupw}, #{code})
     </insert>
-    
+    <!-- 로그인-->
     <select id = "login" resultType="int">
         select count(*) from companyUser m
+      <!-- DB에있어야함-->
         where m.cpuid = #{cpuid} and m.cpupw = #{cpupw}
     </select>
-    
+    <!-- 로그인부가기능-->
     <select id = "Login_Info" resultType="MemberVO">
         select * from companyUser m
         where m.cpuid = #{cpuid} and m.cpupw = #{cpupw}
