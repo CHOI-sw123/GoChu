@@ -21,6 +21,7 @@ public class EmployeesController {
 	private EmployeesDAO employeesDAO;
 	
 	@RequestMapping("/elist.do")
+	//현직자 리스트
 	public String employeesList(Model model, SearchCriteria cri){
 		System.out.println(cri.getPage());
 		List<EmployeesVO> list = employeesDAO.employeesList(cri);
@@ -35,16 +36,19 @@ public class EmployeesController {
 	}
 
 	@RequestMapping("/epDown.do")
+	//엑셀다운로드
 	public String epDownload() {
 		return "epDown";
 	}
 	
 	@RequestMapping("/einsertForm.do")
+	//개별등록
 	public String employeesInsertForm() {
 		return "employeesInsert";
 	}
 	
 	@RequestMapping("/einsert.do")
+	//개별등록
 	public String employeesInsert(EmployeesVO vo) {
 		//System.out.println(vo.toString());
 		employeesDAO.employeesInsert(vo);
@@ -52,6 +56,7 @@ public class EmployeesController {
 	}
 	
 	@RequestMapping("/econtent.do")
+	//개인정보수정(따로구현안시킴)
 	   public String employeesContent(@RequestParam("enumber") int num, Model model) {
 	      //System.out.println(aaa);
 		EmployeesVO vo = employeesDAO.employeesContent(num);
@@ -60,6 +65,7 @@ public class EmployeesController {
 	   }
 	
 	@RequestMapping("/edelete.do")
+	//삭제(따로구현안시킴)
 	   public String employeesDelete(@RequestParam("enumber") int num) {
 	      //System.out.println(aaa);
 		employeesDAO.employeesDelete(num);
@@ -67,6 +73,7 @@ public class EmployeesController {
 	   }
 	
 	@RequestMapping("/eupdate.do")
+	//구현안시킨것
 	   public String employeesUpdate(EmployeesVO vo) {
 	      //System.out.println(aaa);
 		employeesDAO.employeesUpdate(vo);
