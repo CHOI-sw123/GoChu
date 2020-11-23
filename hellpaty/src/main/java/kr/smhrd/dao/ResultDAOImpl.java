@@ -18,6 +18,7 @@ public class ResultDAOImpl implements ResultDAO {
 	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
 	@Override
+	//모달창에 리스트출력
 	public List<CandidatesVO> candidateResultList() {
 		SqlSession session = sqlSessionFactory.openSession();
 		List<CandidatesVO> list =null;
@@ -30,7 +31,7 @@ public class ResultDAOImpl implements ResultDAO {
 		}
 		return list;
 	}
-	
+	//체크된 명단을 세션에 담기위한 작업
     public int rlogin(CandidatesVO m, HttpSession Hsession) {
     	SqlSession session = sqlSessionFactory.openSession();
     	
