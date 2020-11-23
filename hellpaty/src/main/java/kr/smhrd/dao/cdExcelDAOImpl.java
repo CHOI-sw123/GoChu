@@ -38,17 +38,18 @@ public class cdExcelDAOImpl {
                     continue;
                 }
                 
-                // 행의 첫번째 열 
+                // 행의 첫번째 열받아오기(이름) 
                 XSSFCell cell = row.getCell(0);
                 if(null != cell) vo.setName(cell.getStringCellValue());
-                // 행의 두번째 열 받아오기
+                // 행의 두번째 열 받아오기(성별)
                 cell = row.getCell(1);
                 if(null != cell) vo.setSex(cell.getStringCellValue());
-                // 행의 세번째 열 받아오기
+                // 행의 세번째 열 받아오기(이미지이름)
                 cell = row.getCell(2);
-                if(null != cell) vo.setCode(cell.getStringCellValue());
-                cell = row.getCell(3);
                 if(null != cell) vo.setHandwriting_c(cell.getStringCellValue());
+		    //행의 네번째 열 받아오기(회사코드)
+                cell = row.getCell(3);
+                if(null != cell) vo.setCode(cell.getStringCellValue());
                 list.add(vo);
             }
             candidatesDAO.cdInsertExcel(list);
