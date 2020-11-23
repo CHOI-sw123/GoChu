@@ -21,16 +21,16 @@ public class ResultController {
 	private ResultDAO resultDAO;
 	
 	@RequestMapping("/result.do")
+	//모달창에 리스트 이름으로 출력하기
 	public String candidatesResultList(Model model){
 		List<CandidatesVO> list = resultDAO.candidateResultList();
 		model.addAttribute("rlist",list);
 		return "result";
 	}
 	
-    //body의 값을 매핑하는 용도
-    //POST로 Login으로 요청을 할 경우
+   
     @RequestMapping(value = "/addResult.do")
-    //login이라는 메소드명을 가지고 매개변수는 member m, Httpsession session
+	//파이썬에 넘길때 session에 담겨 페이지를 끄기전에는 유지되도록하기
     public String rlogin(HttpServletRequest request) {
     	HttpSession session = request.getSession(true);
     	String[] arr=null;
@@ -39,11 +39,12 @@ public class ResultController {
     		return "result";
     	}
     	else {
+		
     		arr=request.getParameterValues("rlist");
     	session.setAttribute("rm",arr);
     	return "redirect:/result.do";
     	}
-        //m_dao.Login(m, session)을 호출하고 반환한다.
+       
     }
     
 }
