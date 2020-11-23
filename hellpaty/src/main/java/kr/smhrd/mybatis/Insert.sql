@@ -1,3 +1,5 @@
+--가데이터
+
 insert into company values('test1','testcom1');
 insert into company values('test2','testcom2');
 insert into company values('smhrd','스마트미디어인재개발원');
