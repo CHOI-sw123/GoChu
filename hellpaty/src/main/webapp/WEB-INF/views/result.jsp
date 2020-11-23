@@ -180,7 +180,7 @@ ul li {
       <div class="modal-content">
       <input type="text"/><input type="button" value="검색"/>
         <span class="close">&times;</span>
-        <form id="frmReq" action="localhost:9000/" method="POST">
+        <form id="frmReq" action="http://localhost:9000/" method="POST">
 	        <c:forEach var="vo" items="${rlist}">
 	       	 <p><input type="checkbox" name="rlist" value="${vo.handwriting_c}" />${vo.name}</p>
 	        </c:forEach>
