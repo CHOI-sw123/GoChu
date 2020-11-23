@@ -57,6 +57,7 @@ public class MemberController {
 */
 	
 	@RequestMapping("/register.do")
+	//
 	public String Register(MemberVO vo) {
 		//System.out.println(vo.toString());
 		memberDAO.Register(vo);
