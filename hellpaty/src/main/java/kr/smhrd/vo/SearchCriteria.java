@@ -7,7 +7,7 @@ public class SearchCriteria extends Criteria{
 	
 	public SearchCriteria() {
 	}
-	
+	//검색기능을 위한것
 	public SearchCriteria(String searchType, String keyword, MemberVO vo) {
 		super();
 		this.searchType = searchType;
