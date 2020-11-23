@@ -52,11 +52,13 @@ public class MemberDAOImpl implements MemberDAO{
         }
         return 0;
     }
-    
+    //로그인기능구현
     public int Login(MemberVO m, HttpSession Hsession) {
+	    //세션에담기
     	SqlSession session = sqlSessionFactory.openSession();
         int Id_Search_Result = -1;
         try {
+		//DB에 없을시 로그인안됨
             Id_Search_Result = session.selectOne("login", m);
         }
         catch (Exception e) {
@@ -67,6 +69,7 @@ public class MemberDAOImpl implements MemberDAO{
         if(Id_Search_Result != 1) return Id_Search_Result;
         
         try {
+		//DB에 있을경우 로그인됨
         	MemberVO m_info = session.selectOne("Login_Info", m);
             Hsession.setAttribute("m", m_info);
             return 1;
